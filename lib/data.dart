@@ -1,6 +1,7 @@
 
 class VerbInfo {
-  final verbID;
+  final int verbID;
+  final String es;
   final String presente;
   final String pasado;
   final String participio;
@@ -9,6 +10,7 @@ class VerbInfo {
   VerbInfo(
     this.verbID, 
     {
+      this.es,
       this.presente,
       this.pasado,
       this.participio,
@@ -17,10 +19,35 @@ class VerbInfo {
   );
 }
 
-List<VerbInfo> planets = [
+List<VerbInfo> verbos = [
   VerbInfo (1,
+  es: 'Llorar',
   presente: 'Cry',
   pasado: 'Cried',
   participio: 'Cried',
   image: 'assets/cry.png'),
+  VerbInfo(2, 
+  es: 'Correr',
+  presente: 'Run',
+  pasado: 'Ran',
+  participio: 'Run',
+  image: 'assets/run.png'),
+  VerbInfo(3, 
+  es: 'Cargar',
+  presente: 'Carry',
+  pasado: 'Carried',
+  participio: 'Carried',
+  image: 'assets/carry.png'),
+  VerbInfo(4, 
+  es: 'Observar',
+  presente: 'Watch',
+  pasado: 'Watched',
+  participio: 'Watched',
+  image: 'assets/watch.png'),
+  VerbInfo(5, 
+  es: 'Volar',
+  presente: 'Fly',
+  pasado: 'Flew',
+  participio: 'Flown',
+  image: 'assets/fly.png'),
 ];

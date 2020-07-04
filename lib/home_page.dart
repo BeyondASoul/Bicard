@@ -1,3 +1,4 @@
+import 'package:bicard/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -15,44 +16,132 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorPrincipal,
+      backgroundColor: Color(0xFFCC444B),
       body: Container(
         alignment: Alignment.topCenter,
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      "Verbos",
-                      style: TextStyle(
-                        fontFamily: 'Avenir',
-                        fontSize: 35,
-                        color: colorTextoPrincipal,
-                        fontWeight: FontWeight.w600,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Verbos",
+                        style: TextStyle(
+                          fontFamily: 'Avenir',
+                          fontSize: 35,
+                          color: colorTextoPrincipal,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        "Inglés",
+                        style: TextStyle(
+                          fontFamily: 'Avenir',
+                          fontSize: 20,
+                          color: colorTextoSecundario,
+                        ),
+                        textAlign: TextAlign.left,
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 500,
+                  child: Swiper(
+                    itemCount: verbos.length,
+                    layout: SwiperLayout.DEFAULT,
+                    pagination: SwiperPagination(
+                      builder: DotSwiperPaginationBuilder(
+                      color: Color(0xFFdf7373),
+                      activeColor: Colors.white,
+                      space: 5
                       ),
                     ),
-                    Text(
-                      "Inglés",
-                      style: TextStyle(
-                        fontFamily: 'Avenir',
-                        fontSize: 20,
-                        color: colorTextoSecundario,
-                      ),
-                    )
-                  ],
+                    itemBuilder: (context , index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (context, a, b) => DetailPage(
+                                verbInfo: verbos[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Stack(
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                SizedBox(height:200),
+                                Card(
+                                  elevation: 30,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(80)
+                                  ),
+                                  color: colorTarjetaFondo,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(30.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(height:30),
+                                        Text(
+                                          verbos[index].es,
+                                          style: TextStyle(
+                                            fontFamily: 'Avenir',
+                                            fontSize: 40,
+                                            color: colorTextoTarjeta,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            Text(
+                                              'Ver más',
+                                              style: TextStyle(
+                                                fontFamily: 'Avenir',
+                                                fontSize: 18,
+                                                color: colorTextoTarjetaSecundario,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward,
+                                              color: colorTextoTarjetaSecundario,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Image.asset(
+                                  verbos[index].image,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }, //itemBuilder
+                  ),
                 ),
-              ),
-              Container(
-                height: 300,
-                child: Swiper(
-                  itemCount: 1,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
