@@ -1,7 +1,7 @@
-import 'package:bicard/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import 'detail_page.dart';
 import 'constants.dart';
 import 'data.dart';
 
@@ -129,8 +129,11 @@ class _HomePageState extends State<HomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Image.asset(
-                                  verbos[index].image,
+                                Hero(
+                                  tag: verbos[index].verbID,
+                                  child: Image.asset(
+                                    verbos[index].image,
+                                  ),
                                 ),
                               ],
                             ),
