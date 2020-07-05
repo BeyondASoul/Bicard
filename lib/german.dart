@@ -1,4 +1,3 @@
-import 'package:bicard/german.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -6,32 +5,28 @@ import 'detail_page.dart';
 import 'constants.dart';
 import 'data.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+class GermanPage extends StatefulWidget {
+  GermanPage({Key key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _GermanPageState createState() => _GermanPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GermanPageState extends State<GermanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        label: Text('Alemán'),
-        backgroundColor: colorPrincipalGe,
-        foregroundColor: colorTextoPrincipalGe,
+        label: Text('Inglés'),
+        backgroundColor: colorPrincipal,
+        foregroundColor: colorTextoPrincipal,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16.0))),
+        
         onPressed: (){
-          Navigator.push(context,
-            MaterialPageRoute(
-              builder: (
-                context) => GermanPage()
-            )
-          );
+          Navigator.pop(context);
         },
       ),
-      backgroundColor: Color(0xFFCC444B),
+      backgroundColor: colorPrincipalGe,
       body: Container(
         alignment: Alignment.center,
         child: SafeArea(
@@ -49,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 35,
-                          color: colorTextoPrincipal,
+                          color: colorTextoPrincipalGe,
                           fontWeight: FontWeight.w600,
                         ),
                         textAlign: TextAlign.left,
@@ -59,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 20,
-                          color: colorTextoSecundario,
+                          color: colorTextoSecundarioGe,
                         ),
                         textAlign: TextAlign.left,
                       )
@@ -69,12 +64,12 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 500,
                   child: Swiper(
-                    itemCount: verbos.length,
+                    itemCount: verbosGe.length,
                     layout: SwiperLayout.DEFAULT,
                     pagination: SwiperPagination(
                       builder: FractionPaginationBuilder(
-                      color: Color(0xFFdf7373),
-                      activeColor: Colors.white,
+                      color: Color(0xAA50514f),
+                      activeColor: colorTextoPrincipalGe,
                       activeFontSize: 50,
                       fontSize: 20,
                       ),
@@ -86,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             context,
                             PageRouteBuilder(
                               pageBuilder: (context, a, b) => DetailPage(
-                                verbInfo: verbos[index],
+                                verbInfo: verbosGe[index],
                               ),
                             ),
                           );
@@ -101,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(100)
                                   ),
-                                  color: colorTarjetaFondo,
+                                  color: colorTarjetaFondoGe,
                                   child: Padding(
                                     padding: const EdgeInsets.all(30.0),
                                     child: Column(
@@ -109,11 +104,11 @@ class _HomePageState extends State<HomePage> {
                                       children: <Widget>[
                                         SizedBox(height:30),
                                         Text(
-                                          verbos[index].es,
+                                          verbosGe[index].es,
                                           style: TextStyle(
                                             fontFamily: 'Avenir',
                                             fontSize: 40,
-                                            color: colorTextoTarjeta,
+                                            color: colorTextoTarjetaGe,
                                             fontWeight: FontWeight.w700,
                                           ),
                                           textAlign: TextAlign.center,
@@ -126,13 +121,13 @@ class _HomePageState extends State<HomePage> {
                                               style: TextStyle(
                                                 fontFamily: 'Avenir',
                                                 fontSize: 18,
-                                                color: colorTextoTarjetaSecundario,
+                                                color: colorTextoTarjetaSecundarioGe,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                             Icon(
                                               Icons.arrow_forward,
-                                              color: colorTextoTarjetaSecundario,
+                                              color: colorTextoTarjetaSecundarioGe,
                                             ),
                                           ],
                                         ),
@@ -146,9 +141,9 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Hero(
-                                  tag: verbos[index].verbID,
+                                  tag: verbosGe[index].verbID,
                                   child: Image.asset(
-                                    verbos[index].image,
+                                    verbosGe[index].image,
                                   ),
                                 ),
                               ],

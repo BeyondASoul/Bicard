@@ -21,11 +21,13 @@ class DetailPage extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(50),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(height: 150),
                         Divider(color: Colors.red),

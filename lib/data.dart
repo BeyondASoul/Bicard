@@ -289,3 +289,26 @@ List<VerbInfo> verbos = [
   pronunciacion3: 'Uouken Op',
   image: 'assets/wake.png'),
 ];
+
+List<VerbInfo> verbosGe = [
+  VerbInfo (1,
+  numero: '1',
+  es: 'Weinen',
+  presente: 'Cry',
+  pasado: 'Cried',
+  participio: 'Cried',
+  pronunciacion1: 'Crai',
+  pronunciacion2: 'Craid',
+  pronunciacion3: 'Craid',
+  image: 'assets/cry.png'),
+  VerbInfo(2, 
+  numero: '2',
+  es: 'Correr',
+  presente: 'Run',
+  pasado: 'Ran',
+  participio: 'Run',
+  pronunciacion1: 'Ron',
+  pronunciacion2: 'Ran',
+  pronunciacion3: 'Ron',
+  image: 'assets/run.png'),
+];
