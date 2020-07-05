@@ -23,6 +23,13 @@ environment:
 dependencies:
   flutter_swiper: ^1.1.6
   flutter_page_indicator: ^0.0.3
+  flutter_launcher_icons: "^0.7.5"
+
+flutter_icons:
+  image_path: "icon/Bicard.png" 
+  android: true
+  ios: true
+
   flutter:
     sdk: flutter
 

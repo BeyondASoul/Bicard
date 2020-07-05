@@ -16,6 +16,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: (){},),
       backgroundColor: Color(0xFFCC444B),
       body: Container(
         alignment: Alignment.topCenter,
@@ -57,10 +60,11 @@ class _HomePageState extends State<HomePage> {
                     itemCount: verbos.length,
                     layout: SwiperLayout.DEFAULT,
                     pagination: SwiperPagination(
-                      builder: DotSwiperPaginationBuilder(
+                      builder: FractionPaginationBuilder(
                       color: Color(0xFFdf7373),
                       activeColor: Colors.white,
-                      space: 0
+                      activeFontSize: 50,
+                      fontSize: 20,
                       ),
                     ),
                     itemBuilder: (context , index) {
