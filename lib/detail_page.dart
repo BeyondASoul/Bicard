@@ -12,6 +12,9 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colorTarjetaFondo,
       body: SafeArea(
+        top: true,
+        right: true,
+        left: true,
         bottom: false,
         child: Stack(
           children: <Widget>[
@@ -20,20 +23,40 @@ class DetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        SizedBox(height: 200),
-                        Divider(color: Colors.black38),
-                        SizedBox(height: 50),
+                        SizedBox(height: 150),
+                        Divider(color: Colors.red),
+                        SizedBox(height: 0),
+                        Text(
+                          '#'+verbInfo.numero+': '+verbInfo.es,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 50,
+                            color: colorPrincipal,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          textAlign: TextAlign.center,
+                    ),
                         Text(
                           'Presente: '+verbInfo.presente,
                           style: TextStyle(
                             fontFamily: 'Avenir',
-                            fontSize: 40,
+                            fontSize: 30,
                             color: colorPrincipal,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'Pronunciación: '+verbInfo.pronunciacion1,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 30,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -41,8 +64,18 @@ class DetailPage extends StatelessWidget {
                           'Pasado: '+verbInfo.pasado,
                           style: TextStyle(
                             fontFamily: 'Avenir',
-                            fontSize: 40,
+                            fontSize: 30,
                             color: colorPrincipal,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'Pronunciación: '+verbInfo.pronunciacion2,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 30,
+                            color: Colors.black,
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -51,14 +84,24 @@ class DetailPage extends StatelessWidget {
                           'Participio: '+verbInfo.participio,
                           style: TextStyle(
                             fontFamily: 'Avenir',
-                            fontSize: 40,
+                            fontSize: 30,
                             color: colorPrincipal,
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 30),
-                        Divider(color: Colors.black38),
+                        Text(
+                          'Pronunciación: '+verbInfo.pronunciacion3,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 30,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 50),
+                        Divider(color: Colors.red),
                       ],
                     ),
                   ),
@@ -70,20 +113,6 @@ class DetailPage extends StatelessWidget {
               child: Hero(
                   tag: verbInfo.verbID,
                   child: Image.asset(verbInfo.image)),
-            ),
-            Positioned(
-              top: 80,
-              left: 30,
-              child: Text(
-                verbInfo.es,
-                style: TextStyle(
-                  fontFamily: 'Avenir',
-                  fontSize: 50,
-                  color: colorPrincipal,
-                  fontWeight: FontWeight.w900,
-                ),
-                textAlign: TextAlign.left,
-              ),
             ),
             IconButton(
               icon: Icon(Icons.arrow_back_ios),

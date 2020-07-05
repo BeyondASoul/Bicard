@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   flutter_swiper: ^1.1.6
+  flutter_page_indicator: ^0.0.3
   flutter:
     sdk: flutter
 

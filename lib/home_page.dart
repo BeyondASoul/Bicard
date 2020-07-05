@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 
 import 'detail_page.dart';
 import 'constants.dart';
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                       builder: DotSwiperPaginationBuilder(
                       color: Color(0xFFdf7373),
                       activeColor: Colors.white,
-                      space: 5
+                      space: 0
                       ),
                     ),
                     itemBuilder: (context , index) {
@@ -83,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                                 Card(
                                   elevation: 30,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(80)
+                                    borderRadius: BorderRadius.circular(100)
                                   ),
                                   color: colorTarjetaFondo,
                                   child: Padding(
