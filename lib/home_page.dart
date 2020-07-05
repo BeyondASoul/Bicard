@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 
 import 'detail_page.dart';
 import 'constants.dart';
