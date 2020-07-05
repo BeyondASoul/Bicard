@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: (){},),
       backgroundColor: Color(0xFFCC444B),
       body: Container(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
