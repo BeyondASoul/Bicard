@@ -414,9 +414,9 @@ List<VerbInfo> verbos = [
   presente: 'Cut',
   pasado: 'Cut',
   participio: 'Cut',
-  pronunciacion1: 'Cut',
-  pronunciacion2: 'Cut',
-  pronunciacion3: 'Cut',
+  pronunciacion1: 'Cat',
+  pronunciacion2: 'Cat',
+  pronunciacion3: 'Cat',
   image: 'assets/cut.png'),
   VerbInfo(40, 
   numero: '40',
@@ -641,4 +641,57 @@ List<VerbInfo> verbosGe = [
   pronunciacion2: 'Ran',
   pronunciacion3: 'Ron',
   image: 'assets/run.png'),
+];
+
+class ColorPagina {
+  final int idiomaid;
+  final String idioma;
+  final int colorPrincipal;
+  final int colorTextoPrincipal;
+  final int colorTextoSecundario;
+  final int colorTextoTarjeta;
+  final int colorTextoTarjetaSecundario;
+  final int colorTarjetaFondo;
+  final int colorElementosFaltantes;
+  final int colorElementoActual;
+
+  
+  ColorPagina(
+    this.idiomaid,
+    {
+      this.idioma,
+      this.colorPrincipal,
+      this.colorTextoPrincipal,
+      this.colorTextoSecundario,
+      this.colorTextoTarjeta,
+      this.colorTextoTarjetaSecundario,
+      this.colorTarjetaFondo,
+      this.colorElementosFaltantes,
+      this.colorElementoActual,
+      }
+  );
+}
+
+List<ColorPagina> colorPagina = [
+  ColorPagina(1, 
+  idioma: 'Inglés',
+  colorPrincipal: 0xFFCC444B,
+  colorTextoPrincipal: 0xFFE4B1AB,
+  colorTextoSecundario: 0xAAE4B1AB,
+  colorTextoTarjeta: 0xFFCC444B,
+  colorTextoTarjetaSecundario: 0xAACC444B,
+  colorTarjetaFondo: 0xFFFFE3E0,
+  colorElementosFaltantes: 0xFFF7F4F4,
+  colorElementoActual: 0xFFFFFFFF),
+  ColorPagina(2,
+  idioma: 'Alemán',
+  colorPrincipal: 0xFFffaa5a,
+  colorTextoPrincipal: 0xFF50514f,
+  colorTextoSecundario: 0xAA50514f,
+  colorTextoTarjeta: 0xFF50514f,
+  colorTextoTarjetaSecundario: 0xAA50514f,
+  colorTarjetaFondo: 0xFFeae2b7,
+  colorElementosFaltantes: 0xAA50514f,
+  colorElementoActual: 0xFF50514f),
+
 ];

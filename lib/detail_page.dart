@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bicard/data.dart';
+
+import 'data.dart';
 import 'constants.dart';
 
 class DetailPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorTarjetaFondo,
+      backgroundColor: Color(0xFFFFFFFF),
       body: SafeArea(
         top: true,
         right: true,
@@ -32,16 +33,19 @@ class DetailPage extends StatelessWidget {
                         SizedBox(height: 150),
                         Divider(color: Colors.red),
                         SizedBox(height: 0),
-                        Text(
-                          '#'+verbInfo.numero+': '+verbInfo.es,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 50,
-                            color: colorPrincipal,
-                            fontWeight: FontWeight.w900,
-                          ),
-                          textAlign: TextAlign.center,
+                        Hero(
+                          tag: 'card',
+                          child: Text(
+                            verbInfo.es,
+                            style: TextStyle(
+                              fontFamily: 'Avenir',
+                              fontSize: 40,
+                              color: colorPrincipal,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.center,
                     ),
+                        ),
                         Text(
                           'Presente: '+verbInfo.presente,
                           style: TextStyle(

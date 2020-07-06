@@ -1,37 +1,32 @@
-import 'package:bicard/german.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 import 'detail_page.dart';
-import 'constants.dart';
 import 'data.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  final List<ColorPagina> colorPagina;
+  final int i;
+  const HomePage({Key key, this.colorPagina, this.i}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        label: Text('Alemán'),
-        backgroundColor: colorPrincipalGe,
-        foregroundColor: colorTextoPrincipalGe,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16.0))),
-        onPressed: (){
-          Navigator.push(context,
-            MaterialPageRoute(
-              builder: (
-                context) => GermanPage()
-            )
-          );
-        },
-      ),
-      backgroundColor: Color(0xFFCC444B),
+      backgroundColor: Color(colorPagina[widget.i].colorPrincipal),
+      appBar: AppBar(
+        backgroundColor: Color(colorPagina[widget.i].colorPrincipal),
+        elevation: 0,
+        actions: <Widget>[
+
+        ],
+        ),
       body: Container(
         alignment: Alignment.center,
         child: SafeArea(
@@ -49,17 +44,17 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 35,
-                          color: colorTextoPrincipal,
+                          color: Color(colorPagina[widget.i].colorTextoPrincipal),
                           fontWeight: FontWeight.w600,
                         ),
                         textAlign: TextAlign.left,
                       ),
                       Text(
-                        "Inglés",
+                        colorPagina[widget.i].idioma,
                         style: TextStyle(
                           fontFamily: 'Avenir',
                           fontSize: 20,
-                          color: colorTextoSecundario,
+                          color: Color(colorPagina[widget.i].colorTextoSecundario),
                         ),
                         textAlign: TextAlign.left,
                       )
@@ -73,8 +68,8 @@ class _HomePageState extends State<HomePage> {
                     layout: SwiperLayout.DEFAULT,
                     pagination: SwiperPagination(
                       builder: FractionPaginationBuilder(
-                      color: Color(0xFFdf7373),
-                      activeColor: Colors.white,
+                      color: Color(colorPagina[widget.i].colorElementosFaltantes),
+                      activeColor: Color(colorPagina[widget.i].colorElementoActual),
                       activeFontSize: 50,
                       fontSize: 20,
                       ),
@@ -84,8 +79,8 @@ class _HomePageState extends State<HomePage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            PageRouteBuilder(
-                              pageBuilder: (context, a, b) => DetailPage(
+                            CupertinoPageRoute(
+                              builder: (context) => DetailPage(
                                 verbInfo: verbos[index],
                               ),
                             ),
@@ -101,22 +96,25 @@ class _HomePageState extends State<HomePage> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(100)
                                   ),
-                                  color: colorTarjetaFondo,
+                                  color: Color(colorPagina[widget.i].colorTarjetaFondo),
                                   child: Padding(
                                     padding: const EdgeInsets.all(30.0),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>[
                                         SizedBox(height:30),
-                                        Text(
-                                          verbos[index].es,
-                                          style: TextStyle(
-                                            fontFamily: 'Avenir',
-                                            fontSize: 35,
-                                            color: colorTextoTarjeta,
-                                            fontWeight: FontWeight.w700,
+                                        Hero(
+                                          tag: 'card',
+                                          child: Text(
+                                            verbos[index].es,
+                                            style: TextStyle(
+                                              fontFamily: 'Avenir',
+                                              fontSize: 40,
+                                              color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
@@ -126,13 +124,13 @@ class _HomePageState extends State<HomePage> {
                                               style: TextStyle(
                                                 fontFamily: 'Avenir',
                                                 fontSize: 20,
-                                                color: colorTextoTarjetaSecundario,
+                                                color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                             Icon(
                                               Icons.arrow_forward,
-                                              color: colorTextoTarjetaSecundario,
+                                              color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
                                             ),
                                           ],
                                         ),
