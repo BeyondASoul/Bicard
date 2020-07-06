@@ -527,7 +527,7 @@ List<VerbInfo> verbos = [
   pronunciacion1: 'Uok',
   pronunciacion2: 'Uokt',
   pronunciacion3: 'Uokt',
-  image: 'assets/wake.png'),
+  image: 'assets/walk.png'),
   VerbInfo(51, 
   numero: '51',
   es: 'Ir',
