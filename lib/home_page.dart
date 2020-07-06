@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                                           verbos[index].es,
                                           style: TextStyle(
                                             fontFamily: 'Avenir',
-                                            fontSize: 40,
+                                            fontSize: 35,
                                             color: colorTextoTarjeta,
                                             fontWeight: FontWeight.w700,
                                           ),
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                               'Ver más',
                                               style: TextStyle(
                                                 fontFamily: 'Avenir',
-                                                fontSize: 18,
+                                                fontSize: 20,
                                                 color: colorTextoTarjetaSecundario,
                                                 fontWeight: FontWeight.w500,
                                               ),

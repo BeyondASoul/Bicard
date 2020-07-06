@@ -107,7 +107,7 @@ class _GermanPageState extends State<GermanPage> {
                                           verbosGe[index].es,
                                           style: TextStyle(
                                             fontFamily: 'Avenir',
-                                            fontSize: 40,
+                                            fontSize: 35,
                                             color: colorTextoTarjetaGe,
                                             fontWeight: FontWeight.w700,
                                           ),
@@ -120,7 +120,7 @@ class _GermanPageState extends State<GermanPage> {
                                               'Ver más',
                                               style: TextStyle(
                                                 fontFamily: 'Avenir',
-                                                fontSize: 18,
+                                                fontSize: 20,
                                                 color: colorTextoTarjetaSecundarioGe,
                                                 fontWeight: FontWeight.w500,
                                               ),
