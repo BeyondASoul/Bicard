@@ -27,7 +27,48 @@ class VerbInfo {
   );
 }
 
-List<VerbInfo> verbos = [
+class ColorPagina {
+  final int idiomaid;
+  final String idioma;
+  final int colorPrincipal;
+  final int colorTextoPrincipal;
+  final int colorTextoSecundario;
+  final int colorTextoTarjeta;
+  final int colorTextoTarjetaSecundario;
+  final int colorTarjetaFondo;
+  final int colorElementosFaltantes;
+  final int colorElementoActual;
+  final List<VerbInfo> verbosList;
+  
+  ColorPagina(
+    this.idiomaid,
+    {
+      this.idioma,
+      this.colorPrincipal,
+      this.colorTextoPrincipal,
+      this.colorTextoSecundario,
+      this.colorTextoTarjeta,
+      this.colorTextoTarjetaSecundario,
+      this.colorTarjetaFondo,
+      this.colorElementosFaltantes,
+      this.colorElementoActual,
+      this.verbosList,
+      }
+  );
+}
+
+List<ColorPagina> colorPagina = [
+  ColorPagina(1, 
+  idioma: 'Inglés',
+  colorPrincipal: 0xFFCC444B,
+  colorTextoPrincipal: 0xFFE4B1AB,
+  colorTextoSecundario: 0xAAE4B1AB,
+  colorTextoTarjeta: 0xFFCC444B,
+  colorTextoTarjetaSecundario: 0xAACC444B,
+  colorTarjetaFondo: 0xFFFFE3E0,
+  colorElementosFaltantes: 0xFFF7F4F4,
+  colorElementoActual: 0xFFFFFFFF,
+  verbosList: [
   VerbInfo (1,
   numero: '1',
   es: 'Llorar',
@@ -617,72 +658,8 @@ List<VerbInfo> verbos = [
   pronunciacion1: 'Enser',
   pronunciacion2: 'Ensert',
   pronunciacion3: 'Ensert',
-  image: 'assets/answer.png'),
-];
-
-List<VerbInfo> verbosGe = [
-  VerbInfo (1,
-  numero: '1',
-  es: 'Weinen',
-  presente: 'Cry',
-  pasado: 'Cried',
-  participio: 'Cried',
-  pronunciacion1: 'Crai',
-  pronunciacion2: 'Craid',
-  pronunciacion3: 'Craid',
-  image: 'assets/cry.png'),
-  VerbInfo(2, 
-  numero: '2',
-  es: 'Laufen',
-  presente: 'Run',
-  pasado: 'Ran',
-  participio: 'Run',
-  pronunciacion1: 'Ron',
-  pronunciacion2: 'Ran',
-  pronunciacion3: 'Ron',
-  image: 'assets/run.png'),
-];
-
-class ColorPagina {
-  final int idiomaid;
-  final String idioma;
-  final int colorPrincipal;
-  final int colorTextoPrincipal;
-  final int colorTextoSecundario;
-  final int colorTextoTarjeta;
-  final int colorTextoTarjetaSecundario;
-  final int colorTarjetaFondo;
-  final int colorElementosFaltantes;
-  final int colorElementoActual;
-
-  
-  ColorPagina(
-    this.idiomaid,
-    {
-      this.idioma,
-      this.colorPrincipal,
-      this.colorTextoPrincipal,
-      this.colorTextoSecundario,
-      this.colorTextoTarjeta,
-      this.colorTextoTarjetaSecundario,
-      this.colorTarjetaFondo,
-      this.colorElementosFaltantes,
-      this.colorElementoActual,
-      }
-  );
-}
-
-List<ColorPagina> colorPagina = [
-  ColorPagina(1, 
-  idioma: 'Inglés',
-  colorPrincipal: 0xFFCC444B,
-  colorTextoPrincipal: 0xFFE4B1AB,
-  colorTextoSecundario: 0xAAE4B1AB,
-  colorTextoTarjeta: 0xFFCC444B,
-  colorTextoTarjetaSecundario: 0xAACC444B,
-  colorTarjetaFondo: 0xFFFFE3E0,
-  colorElementosFaltantes: 0xFFF7F4F4,
-  colorElementoActual: 0xFFFFFFFF),
+  image: 'assets/answer.png'),],
+),
   ColorPagina(2,
   idioma: 'Alemán',
   colorPrincipal: 0xFFffaa5a,
@@ -692,6 +669,28 @@ List<ColorPagina> colorPagina = [
   colorTextoTarjetaSecundario: 0xAA50514f,
   colorTarjetaFondo: 0xFFeae2b7,
   colorElementosFaltantes: 0xAA50514f,
-  colorElementoActual: 0xFF50514f),
-
+  colorElementoActual: 0xFF50514f,
+  verbosList: [
+  VerbInfo (1,
+  numero: '1',
+  es: 'Llorar',
+  presente: 'Weinen',
+  pasado: 'Weinte',
+  participio: 'Geweint',
+  pronunciacion1: 'Bainen',
+  pronunciacion2: 'Bainte',
+  pronunciacion3: 'Gebaint',
+  image: 'assets/cry.png'),
+  VerbInfo(2, 
+  numero: '2',
+  es: 'Correr',
+  presente: 'Laufen',
+  pasado: 'Lief',
+  participio: 'Gelaufen',
+  pronunciacion1: 'Laufn',
+  pronunciacion2: 'Lif',
+  pronunciacion3: 'Gelaufn',
+  image: 'assets/run.png'),
+  ],
+  ),
 ];

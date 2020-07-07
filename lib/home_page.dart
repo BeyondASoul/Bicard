@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   height: 500,
                   child: Swiper(
-                    itemCount: verbos.length,
+                    itemCount: colorPagina[widget.i].verbosList.length,
                     layout: SwiperLayout.DEFAULT,
                     pagination: SwiperPagination(
                       builder: FractionPaginationBuilder(
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                             context,
                             CupertinoPageRoute(
                               builder: (context) => DetailPage(
-                                verbInfo: verbos[index],
+                                verbInfo: colorPagina[widget.i].verbosList[index],
                               ),
                             ),
                           );
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                                         Hero(
                                           tag: 'card',
                                           child: Text(
-                                            verbos[index].es,
+                                            colorPagina[widget.i].verbosList[index].es,
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
@@ -144,9 +144,9 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Hero(
-                                  tag: verbos[index].verbID,
+                                  tag: colorPagina[widget.i].verbosList[index].verbID,
                                   child: Image.asset(
-                                    verbos[index].image,
+                                    colorPagina[widget.i].verbosList[index].image,
                                   ),
                                 ),
                               ],

@@ -40,7 +40,7 @@ class DetailPage extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 40,
-                              color: colorPrincipal,
+                              color: Color(0xFFCC444B),
                               fontWeight: FontWeight.w700,
                             ),
                             textAlign: TextAlign.center,
