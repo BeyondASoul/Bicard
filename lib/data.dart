@@ -30,6 +30,7 @@ class VerbInfo {
 class ColorPagina {
   final int idiomaid;
   final String idioma;
+  final String imageIdioma;
   final int colorPrincipal;
   final int colorTextoPrincipal;
   final int colorTextoSecundario;
@@ -44,6 +45,7 @@ class ColorPagina {
     this.idiomaid,
     {
       this.idioma,
+      this.imageIdioma,
       this.colorPrincipal,
       this.colorTextoPrincipal,
       this.colorTextoSecundario,
@@ -60,6 +62,7 @@ class ColorPagina {
 List<ColorPagina> colorPagina = [
   ColorPagina(1, 
   idioma: 'Inglés',
+  imageIdioma: 'assets/en.png',
   colorPrincipal: 0xFFCC444B,
   colorTextoPrincipal: 0xFFE4B1AB,
   colorTextoSecundario: 0xAAE4B1AB,
@@ -662,6 +665,7 @@ List<ColorPagina> colorPagina = [
 ),
   ColorPagina(2,
   idioma: 'Alemán',
+  imageIdioma: 'assets/ge.png',
   colorPrincipal: 0xFFFFAA5A,
   colorTextoPrincipal: 0xFF50514F,
   colorTextoSecundario: 0xAA50514F,

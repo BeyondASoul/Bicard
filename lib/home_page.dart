@@ -30,8 +30,8 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: SpeedDial(
           backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-          marginRight: 10,
-          marginBottom: 10,
+          marginRight: 20,
+          marginBottom: 30,
           animatedIcon: AnimatedIcons.menu_close,
           animatedIconTheme: IconThemeData(color: Color(colorPagina[widget.i].colorTextoTarjeta)),
           elevation: 30,
@@ -144,18 +144,15 @@ class _HomePageState extends State<HomePage> {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: <Widget>[
                                         SizedBox(height:30),
-                                        Hero(
-                                          tag: 'card',
-                                          child: Text(
-                                            colorPagina[widget.i].verbosList[index].es,
-                                            style: TextStyle(
-                                              fontFamily: 'Avenir',
-                                              fontSize: 40,
-                                              color: Color(colorPagina[widget.i].colorTextoTarjeta),
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                            textAlign: TextAlign.center,
+                                        Text(
+                                          colorPagina[widget.i].verbosList[index].es,
+                                          style: TextStyle(
+                                            fontFamily: 'Avenir',
+                                            fontSize: 40,
+                                            color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                                            fontWeight: FontWeight.w700,
                                           ),
+                                          textAlign: TextAlign.center,
                                         ),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
