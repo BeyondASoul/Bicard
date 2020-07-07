@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'data.dart';
-import 'constants.dart';
 
 class DetailPage extends StatelessWidget {
   final VerbInfo verbInfo;
@@ -11,7 +10,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
+      backgroundColor: Color(0xFFe9ecef),
       body: SafeArea(
         top: true,
         right: true,
@@ -31,7 +30,7 @@ class DetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(height: 150),
-                        Divider(color: Colors.red),
+                        Divider(color: Color(0xFF6c757d)),
                         SizedBox(height: 0),
                         Hero(
                           tag: 'card',
@@ -40,7 +39,7 @@ class DetailPage extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 40,
-                              color: Color(0xFFCC444B),
+                              color: Color(0xFF000000),
                               fontWeight: FontWeight.w700,
                             ),
                             textAlign: TextAlign.center,
@@ -51,7 +50,7 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: colorPrincipal,
+                            color: Color(0xFF000000),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -61,7 +60,7 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: Colors.black,
+                            color: Color(0XAA6c757d),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -71,7 +70,7 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: colorPrincipal,
+                            color: Color(0xFF000000),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -81,7 +80,7 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: Colors.black,
+                            color: Color(0XAA6c757d),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -91,7 +90,7 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: colorPrincipal,
+                            color: Color(0xFF000000),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
@@ -101,13 +100,13 @@ class DetailPage extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 30,
-                            color: Colors.black,
+                            color: Color(0XAA6c757d),
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 50),
-                        Divider(color: Colors.red),
+                        Divider(color: Color(0xFF000000)),
                       ],
                     ),
                   ),

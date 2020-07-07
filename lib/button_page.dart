@@ -30,17 +30,18 @@ class ButtonPage extends StatelessWidget {
                   ),
                 textAlign: TextAlign.center,
                 ),
+              SizedBox(height: 450),
               RaisedButton(
                 padding: const EdgeInsets.all(15.0),
                 textColor: Color(colorPagina[0].colorTextoPrincipal),
                 color: Color(colorPagina[0].colorPrincipal),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 elevation: 10,
                 child: Text("INGLÉS",
                 style: TextStyle(
                   fontFamily: 'Avenir',
-                  fontSize: 30,
+                  fontSize: 25,
                   ),
                 ),
                 onPressed: (){
@@ -53,12 +54,20 @@ class ButtonPage extends StatelessWidget {
                   );
                 },
               ),
+              SizedBox(height: 50),
               RaisedButton(
                 padding: const EdgeInsets.all(15.0),
                 textColor: Color(colorPagina[1].colorTextoPrincipal),
                 color: Color(colorPagina[1].colorPrincipal),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                elevation: 10,
+                child: Text("ALEMÁN",
+                style: TextStyle(
+                  fontFamily: 'Avenir',
+                  fontSize: 25,
+                  ),
+                ),
                 onPressed: (){
                   Navigator.push(context,
                   MaterialPageRoute(
@@ -67,13 +76,6 @@ class ButtonPage extends StatelessWidget {
                       )
                   );
                 },
-                elevation: 10,
-                child: Text("ALEMÁN",
-                style: TextStyle(
-                  fontFamily: 'Avenir',
-                  fontSize: 30,
-                  ),
-                ),
               ),
             ],
           ),

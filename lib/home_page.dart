@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import 'detail_page.dart';
 import 'data.dart';
@@ -27,6 +28,46 @@ class _HomePageState extends State<HomePage> {
 
         ],
         ),
+        floatingActionButton: SpeedDial(
+          backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
+          marginRight: 10,
+          marginBottom: 10,
+          animatedIcon: AnimatedIcons.menu_close,
+          animatedIconTheme: IconThemeData(color: Color(colorPagina[widget.i].colorTextoTarjeta)),
+          elevation: 30,
+          overlayColor: Colors.black,
+          curve: Curves.decelerate,
+          overlayOpacity: 0.5,
+          shape: CircleBorder(),
+          children: [
+            SpeedDialChild(
+              child: Icon(
+                Icons.directions_car,
+                color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                ),
+              backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
+              label: 'Sustantivos',
+              labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
+              labelStyle: TextStyle(
+                fontSize: 18.0, 
+                color: Color(colorPagina[widget.i].colorTextoTarjeta),
+              ),
+            ),
+            SpeedDialChild(
+              child: Icon(
+                Icons.insert_emoticon,
+                color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                ),
+              backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
+              label: 'Adjetivos',
+              labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
+              labelStyle: TextStyle(
+                fontSize: 18.0, 
+                color: Color(colorPagina[widget.i].colorTextoTarjeta),
+              ),
+            ),
+          ],
+          ),
       body: Container(
         alignment: Alignment.center,
         child: SafeArea(
