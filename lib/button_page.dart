@@ -2,7 +2,6 @@ import 'package:bicard/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'data.dart';
 
@@ -45,18 +44,6 @@ class _ButtonPageState extends State<ButtonPage> {
                           color: Color(0xFFe9ecef),
                           fontWeight: FontWeight.w500,
                           ),
-                      ),
-                      RotateAnimatedTextKit(
-                        isRepeatingAnimation: true,
-                        totalRepeatCount: 5,
-                        text: ["Lee", "Repite", "Aprende"],
-                        textStyle: TextStyle(
-                          fontSize: 40.0, 
-                          fontFamily: "Avenir",
-                          color: Color(0xFFe9ecef),
-                          fontWeight: FontWeight.w500,
-                        ),
-                        alignment: Alignment(1.0, 0.0),
                       ),
                     ],
                   ),
