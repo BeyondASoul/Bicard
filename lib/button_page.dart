@@ -33,17 +33,18 @@ class _ButtonPageState extends State<ButtonPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(5),
                   child: Column(
                     children: <Widget>[
                       Text(
-                        'Con Bicard:',
+                        '¿Qué idioma te gustaría aprender?',
                         style: TextStyle(
                           fontSize: 40.0,
                           fontFamily: 'Avenir',
                           color: Color(0xFFe9ecef),
                           fontWeight: FontWeight.w500,
                           ),
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
@@ -96,7 +97,7 @@ class _ButtonPageState extends State<ButtonPage> {
                                           style: TextStyle(
                                             fontFamily: 'Avenir',
                                             fontSize: 40,
-                                            color: Color(colorPagina[index].colorTarjetaFondo),
+                                            color: Color(colorPagina[index].colorTextoPrincipal),
                                             fontWeight: FontWeight.w700,
                                           ),
                                           textAlign: TextAlign.center,
@@ -109,13 +110,13 @@ class _ButtonPageState extends State<ButtonPage> {
                                               style: TextStyle(
                                                 fontFamily: 'Avenir',
                                                 fontSize: 20,
-                                                color: Color(colorPagina[index].colorTarjetaFondo),
+                                                color: Color(colorPagina[index].colorTextoPrincipal),
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
                                             Icon(
                                               Icons.arrow_forward,
-                                              color: Color(colorPagina[index].colorTarjetaFondo),
+                                              color: Color(colorPagina[index].colorTextoPrincipal),
                                             ),
                                           ],
                                         ),
@@ -128,8 +129,12 @@ class _ButtonPageState extends State<ButtonPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                  Image.asset(
-                                    colorPagina[index].imageIdioma
+                                  Hero(
+                                    transitionOnUserGestures: true,
+                                    tag: colorPagina[index].idiomaid.toString() + "_IdiomaID",
+                                    child: Image.asset(
+                                      colorPagina[index].imageIdioma
+                                    ),
                                   ),
                               ],
                             ),

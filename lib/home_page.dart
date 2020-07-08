@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -46,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 color: Color(colorPagina[widget.i].colorTextoTarjeta),
                 ),
               backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              label: 'Sustantivos',
+              label: 'SUSTANTIVOS',
               labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
               labelStyle: TextStyle(
                 fontSize: 18.0, 
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 color: Color(colorPagina[widget.i].colorTextoTarjeta),
                 ),
               backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              label: 'Adjetivos',
+              label: 'ADJETIVOS',
               labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
               labelStyle: TextStyle(
                 fontSize: 18.0, 
@@ -73,11 +75,11 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Column(
                     children: <Widget>[
                       Text(
@@ -88,7 +90,15 @@ class _HomePageState extends State<HomePage> {
                           color: Color(colorPagina[widget.i].colorTextoPrincipal),
                           fontWeight: FontWeight.w600,
                         ),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
+                      ),
+                      Hero(
+                        transitionOnUserGestures: true,
+                        tag: colorPagina[widget.i].idiomaid.toString() + "_IdiomaID",
+                        child: Image.asset(
+                          colorPagina[widget.i].imageIdioma, 
+                          scale: 5,
+                          ),
                       ),
                       Text(
                         colorPagina[widget.i].idioma,
@@ -97,8 +107,8 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 20,
                           color: Color(colorPagina[widget.i].colorTextoSecundario),
                         ),
-                        textAlign: TextAlign.left,
-                      )
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
                 ),
@@ -182,6 +192,7 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Hero(
+                                  transitionOnUserGestures: true,
                                   tag: colorPagina[widget.i].verbosList[index].verbID,
                                   child: Image.asset(
                                     colorPagina[widget.i].verbosList[index].image,

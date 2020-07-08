@@ -31,7 +31,7 @@ class DetailPage extends StatelessWidget {
                       children: <Widget>[
                         SizedBox(height: 150),
                         Divider(color: Color(0xFF6c757d)),
-                        SizedBox(height: 0),
+                        SizedBox(height: 50),
                         Hero(
                           tag: 'card',
                           child: Text(
@@ -116,8 +116,9 @@ class DetailPage extends StatelessWidget {
             Positioned(
               right: 20,
               child: Hero(
-                  tag: verbInfo.verbID,
-                  child: Image.asset(verbInfo.image)),
+                transitionOnUserGestures: true,
+                tag: verbInfo.verbID,
+                child: Image.asset(verbInfo.image)),
             ),
             IconButton(
               icon: Icon(Icons.arrow_back_ios),
