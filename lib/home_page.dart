@@ -1,9 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/services.dart';
 
 import 'detail_page.dart';
 import 'data.dart';
@@ -26,10 +26,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(colorPagina[widget.i].colorPrincipal),
         elevation: 0,
-        actions: <Widget>[
-
-        ],
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            HapticFeedback.mediumImpact();
+            Navigator.pop(context);
+          },
         ),
+      ),
         floatingActionButton: SpeedDial(
           backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
           marginRight: 20,
@@ -54,6 +59,9 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 18.0, 
                 color: Color(colorPagina[widget.i].colorTextoTarjeta),
               ),
+              onTap: (){
+                HapticFeedback.mediumImpact();
+              }
             ),
             SpeedDialChild(
               child: Icon(
@@ -67,6 +75,9 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 18.0, 
                 color: Color(colorPagina[widget.i].colorTextoTarjeta),
               ),
+              onTap: (){
+                HapticFeedback.mediumImpact();
+              }
             ),
           ],
           ),
@@ -74,139 +85,143 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.center,
         child: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "Verbos",
-                        style: TextStyle(
-                          fontFamily: 'Avenir',
-                          fontSize: 35,
-                          color: Color(colorPagina[widget.i].colorTextoPrincipal),
-                          fontWeight: FontWeight.w600,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Hero(
-                        transitionOnUserGestures: true,
-                        tag: colorPagina[widget.i].idiomaid.toString() + "_IdiomaID",
-                        child: Image.asset(
-                          colorPagina[widget.i].imageIdioma, 
-                          scale: 5,
+            child: BounceInRight(
+              duration: Duration(milliseconds: 1500),
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "Verbos",
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 35,
+                            color: Color(colorPagina[widget.i].colorTextoPrincipal),
+                            fontWeight: FontWeight.w600,
                           ),
-                      ),
-                      Text(
-                        colorPagina[widget.i].idioma,
-                        style: TextStyle(
-                          fontFamily: 'Avenir',
-                          fontSize: 20,
-                          color: Color(colorPagina[widget.i].colorTextoSecundario),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 500,
-                  child: Swiper(
-                    itemCount: colorPagina[widget.i].verbosList.length,
-                    layout: SwiperLayout.DEFAULT,
-                    pagination: SwiperPagination(
-                      builder: FractionPaginationBuilder(
-                      color: Color(colorPagina[widget.i].colorElementosFaltantes),
-                      activeColor: Color(colorPagina[widget.i].colorElementoActual),
-                      activeFontSize: 50,
-                      fontSize: 20,
-                      ),
-                    ),
-                    itemBuilder: (context , index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                              builder: (context) => DetailPage(
-                                verbInfo: colorPagina[widget.i].verbosList[index],
-                              ),
+                        Hero(
+                          transitionOnUserGestures: true,
+                          tag: colorPagina[widget.i].idiomaid.toString() + "_IdiomaID",
+                          child: Image.asset(
+                            colorPagina[widget.i].imageIdioma, 
+                            scale: 5,
                             ),
-                          );
-                        },
-                        child: Stack(
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                SizedBox(height:200),
-                                Card(
-                                  elevation: 30,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100)
-                                  ),
-                                  color: Color(colorPagina[widget.i].colorTarjetaFondo),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(30.0),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        SizedBox(height:30),
-                                        Text(
-                                          colorPagina[widget.i].verbosList[index].es,
-                                          style: TextStyle(
-                                            fontFamily: 'Avenir',
-                                            fontSize: 40,
-                                            color: Color(colorPagina[widget.i].colorTextoTarjeta),
-                                            fontWeight: FontWeight.w700,
+                        ),
+                        Text(
+                          colorPagina[widget.i].idioma,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 20,
+                            color: Color(colorPagina[widget.i].colorTextoSecundario),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 500,
+                    child: Swiper(
+                      itemCount: colorPagina[widget.i].verbosList.length,
+                      layout: SwiperLayout.DEFAULT,
+                      pagination: SwiperPagination(
+                        builder: FractionPaginationBuilder(
+                        color: Color(colorPagina[widget.i].colorElementosFaltantes),
+                        activeColor: Color(colorPagina[widget.i].colorElementoActual),
+                        activeFontSize: 50,
+                        fontSize: 20,
+                        ),
+                      ),
+                      itemBuilder: (context , index) {
+                        return InkWell(
+                          onTap: () {
+                            HapticFeedback.mediumImpact();
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => DetailPage(
+                                  verbInfo: colorPagina[widget.i].verbosList[index],
+                                ),
+                              ),
+                            );
+                          },
+                          child: Stack(
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  SizedBox(height:200),
+                                  Card(
+                                    elevation: 30,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(100)
+                                    ),
+                                    color: Color(colorPagina[widget.i].colorTarjetaFondo),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(30.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          SizedBox(height:30),
+                                          Text(
+                                            colorPagina[widget.i].verbosList[index].es,
+                                            style: TextStyle(
+                                              fontFamily: 'Avenir',
+                                              fontSize: 40,
+                                              color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            textAlign: TextAlign.center,
                                           ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            Text(
-                                              'Ver más',
-                                              style: TextStyle(
-                                                fontFamily: 'Avenir',
-                                                fontSize: 20,
-                                                color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
-                                                fontWeight: FontWeight.w500,
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: <Widget>[
+                                              Text(
+                                                'Ver más',
+                                                style: TextStyle(
+                                                  fontFamily: 'Avenir',
+                                                  fontSize: 20,
+                                                  color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                            ),
-                                            Icon(
-                                              Icons.arrow_forward,
-                                              color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              Icon(
+                                                Icons.arrow_forward,
+                                                color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Hero(
-                                  transitionOnUserGestures: true,
-                                  tag: colorPagina[widget.i].verbosList[index].verbID,
-                                  child: Image.asset(
-                                    colorPagina[widget.i].verbosList[index].image,
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Hero(
+                                    transitionOnUserGestures: true,
+                                    tag: colorPagina[widget.i].verbosList[index].verbID,
+                                    child: Image.asset(
+                                      colorPagina[widget.i].verbosList[index].image,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    }, //itemBuilder
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }, //itemBuilder
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

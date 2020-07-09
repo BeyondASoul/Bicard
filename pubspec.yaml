@@ -25,6 +25,7 @@ dependencies:
   flutter_page_indicator: ^0.0.3
   flutter_launcher_icons: "^0.7.5"
   flutter_speed_dial: ^1.2.5
+  animate_do: ^1.7.2
 
 flutter_icons:
   image_path: "icon/Bicard.png" 
