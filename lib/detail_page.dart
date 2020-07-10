@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'data.dart';
 
 class DetailPage extends StatelessWidget {
-  final VerbInfo verbInfo;
+  final Info info;
 
-  const DetailPage({Key key, this.verbInfo}) : super(key: key);
+  const DetailPage({Key key, this.info}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +20,9 @@ class DetailPage extends StatelessWidget {
         bottom: false,
         child: Stack(
           children: <Widget>[
-            SingleChildScrollView(
-              child: FlipInY(
-                duration: Duration(milliseconds: 1500),
+            FlipInY(
+              duration: Duration(milliseconds: 700),
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -36,21 +36,18 @@ class DetailPage extends StatelessWidget {
                           SizedBox(height: 150),
                           Divider(color: Color(0xFF6c757d)),
                           SizedBox(height: 50),
-                          Hero(
-                            tag: 'card',
-                            child: Text(
-                              verbInfo.es,
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 40,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w700,
-                              ),
-                              textAlign: TextAlign.center,
+                          Text(
+                            info.es,
+                            style: TextStyle(
+                              fontFamily: 'Avenir',
+                              fontSize: 40,
+                              color: Color(0xFF000000),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.center,
                       ),
-                          ),
                           Text(
-                            'Presente: '+verbInfo.presente,
+                            info.presente,
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -60,7 +57,7 @@ class DetailPage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            'Pronunciación: '+verbInfo.pronunciacion1,
+                            info.pronunciacion1,
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -69,8 +66,8 @@ class DetailPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            'Pasado: '+verbInfo.pasado,
+                          info.pasado==null ? Container() : new Text(
+                              "${info.pasado}",
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -79,8 +76,8 @@ class DetailPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            'Pronunciación: '+verbInfo.pronunciacion2,
+                          info.pronunciacion2==null ? Container() : new Text(
+                              "${info.pronunciacion2}",
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -89,8 +86,8 @@ class DetailPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            'Participio: '+verbInfo.participio,
+                          info.participio==null ? Container() : new Text(
+                              "${info.participio}",
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -99,8 +96,8 @@ class DetailPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Text(
-                            'Pronunciación: '+verbInfo.pronunciacion3,
+                          info.pronunciacion3==null ? Container() : new Text(
+                              "${info.pronunciacion3}",
                             style: TextStyle(
                               fontFamily: 'Avenir',
                               fontSize: 30,
@@ -122,8 +119,8 @@ class DetailPage extends StatelessWidget {
               right: 20,
               child: Hero(
                 transitionOnUserGestures: true,
-                tag: verbInfo.verbID,
-                child: Image.asset(verbInfo.image)),
+                tag: info.id,
+                child: Image.asset(info.image)),
             ),
             IconButton(
               icon: Icon(Icons.arrow_back_ios),

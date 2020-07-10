@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/services.dart';
 
-import 'detail_page.dart';
 import 'data.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
-  final List<ColorPagina> colorPagina;
-  final int i;
-  const HomePage({Key key, this.colorPagina, this.i}) : super(key: key);
-
+  final String categoria;
+  final int categoriaID;
+  final int idiomaID;
+  const HomePage({Key key, this.categoria,this.categoriaID,this.idiomaID}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(colorPagina[widget.i].colorPrincipal),
+      backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
       appBar: AppBar(
-        backgroundColor: Color(colorPagina[widget.i].colorPrincipal),
+        backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -34,91 +32,52 @@ class _HomePageState extends State<HomePage> {
             Navigator.pop(context);
           },
         ),
-      ),
-        floatingActionButton: SpeedDial(
-          backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-          marginRight: 20,
-          marginBottom: 30,
-          animatedIcon: AnimatedIcons.menu_close,
-          animatedIconTheme: IconThemeData(color: Color(colorPagina[widget.i].colorTextoTarjeta)),
-          elevation: 30,
-          overlayColor: Colors.black,
-          curve: Curves.decelerate,
-          overlayOpacity: 0.5,
-          shape: CircleBorder(),
-          children: [
-            SpeedDialChild(
-              child: Icon(
-                Icons.directions_car,
-                color: Color(colorPagina[widget.i].colorTextoTarjeta),
-                ),
-              backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              label: 'SUSTANTIVOS',
-              labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              labelStyle: TextStyle(
-                fontSize: 18.0, 
-                color: Color(colorPagina[widget.i].colorTextoTarjeta),
-              ),
-              onTap: (){
-                HapticFeedback.mediumImpact();
-              }
+        actions: <Widget>[
+          Hero(
+            transitionOnUserGestures: true,
+            tag: colorPagina[widget.idiomaID].categorias[widget.categoriaID].categoria.toString() + "_CategoriaID",
+            child: Image.asset(
+              colorPagina[widget.idiomaID].categorias[widget.categoriaID].imagenCategoria
             ),
-            SpeedDialChild(
-              child: Icon(
-                Icons.insert_emoticon,
-                color: Color(colorPagina[widget.i].colorTextoTarjeta),
-                ),
-              backgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              label: 'ADJETIVOS',
-              labelBackgroundColor: Color(colorPagina[widget.i].colorTarjetaFondo),
-              labelStyle: TextStyle(
-                fontSize: 18.0, 
-                color: Color(colorPagina[widget.i].colorTextoTarjeta),
-              ),
-              onTap: (){
-                HapticFeedback.mediumImpact();
-              }
-            ),
-          ],
           ),
-      body: Container(
-        alignment: Alignment.center,
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: BounceInRight(
-              duration: Duration(milliseconds: 1500),
+        ],
+      ),
+      body: FadeInRight(
+        duration: Duration(milliseconds: 700),
+        child: Container(
+          alignment: Alignment.center,
+          child: SafeArea(
+            child: SingleChildScrollView(
               child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                //mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: <Widget>[
                         Text(
-                          "Verbos",
+                          widget.categoria,
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 35,
-                            color: Color(colorPagina[widget.i].colorTextoPrincipal),
+                            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
                             fontWeight: FontWeight.w600,
                           ),
                           textAlign: TextAlign.center,
                         ),
                         Hero(
                           transitionOnUserGestures: true,
-                          tag: colorPagina[widget.i].idiomaid.toString() + "_IdiomaID",
+                          tag: colorPagina[widget.idiomaID].idiomaid.toString() + "_IdiomaID",
                           child: Image.asset(
-                            colorPagina[widget.i].imageIdioma, 
+                            colorPagina[widget.idiomaID].imageIdioma, 
                             scale: 5,
                             ),
                         ),
                         Text(
-                          colorPagina[widget.i].idioma,
+                          colorPagina[widget.idiomaID].idioma,
                           style: TextStyle(
                             fontFamily: 'Avenir',
                             fontSize: 20,
-                            color: Color(colorPagina[widget.i].colorTextoSecundario),
+                            color: Color(colorPagina[widget.idiomaID].colorTextoSecundario),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -128,12 +87,12 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 500,
                     child: Swiper(
-                      itemCount: colorPagina[widget.i].verbosList.length,
+                      itemCount: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list.length,
                       layout: SwiperLayout.DEFAULT,
                       pagination: SwiperPagination(
                         builder: FractionPaginationBuilder(
-                        color: Color(colorPagina[widget.i].colorElementosFaltantes),
-                        activeColor: Color(colorPagina[widget.i].colorElementoActual),
+                        color: Color(colorPagina[widget.idiomaID].colorElementosFaltantes),
+                        activeColor: Color(colorPagina[widget.idiomaID].colorElementoActual),
                         activeFontSize: 50,
                         fontSize: 20,
                         ),
@@ -146,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                               context,
                               CupertinoPageRoute(
                                 builder: (context) => DetailPage(
-                                  verbInfo: colorPagina[widget.i].verbosList[index],
+                                  info: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index],
                                 ),
                               ),
                             );
@@ -161,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(100)
                                     ),
-                                    color: Color(colorPagina[widget.i].colorTarjetaFondo),
+                                    color: Color(colorPagina[widget.idiomaID].colorTarjetaFondo),
                                     child: Padding(
                                       padding: const EdgeInsets.all(30.0),
                                       child: Column(
@@ -169,11 +128,11 @@ class _HomePageState extends State<HomePage> {
                                         children: <Widget>[
                                           SizedBox(height:30),
                                           Text(
-                                            colorPagina[widget.i].verbosList[index].es,
+                                            colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].es,
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
-                                              color: Color(colorPagina[widget.i].colorTextoTarjeta),
+                                              color: Color(colorPagina[widget.idiomaID].colorTextoTarjeta),
                                               fontWeight: FontWeight.w700,
                                             ),
                                             textAlign: TextAlign.center,
@@ -186,13 +145,13 @@ class _HomePageState extends State<HomePage> {
                                                 style: TextStyle(
                                                   fontFamily: 'Avenir',
                                                   fontSize: 20,
-                                                  color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
+                                                  color: Color(colorPagina[widget.idiomaID].colorTextoTarjetaSecundario),
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.arrow_forward,
-                                                color: Color(colorPagina[widget.i].colorTextoTarjetaSecundario),
+                                                color: Color(colorPagina[widget.idiomaID].colorTextoTarjetaSecundario),
                                               ),
                                             ],
                                           ),
@@ -207,9 +166,9 @@ class _HomePageState extends State<HomePage> {
                                 children: <Widget>[
                                   Hero(
                                     transitionOnUserGestures: true,
-                                    tag: colorPagina[widget.i].verbosList[index].verbID,
+                                    tag: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].id,
                                     child: Image.asset(
-                                      colorPagina[widget.i].verbosList[index].image,
+                                      colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].image
                                     ),
                                   ),
                                 ],
