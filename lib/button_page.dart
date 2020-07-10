@@ -70,6 +70,8 @@ class _ButtonPageState extends State<ButtonPage> {
                                 builder: (context) => CategoryPage(
                                   categoriasPagina: colorPagina[index].categorias,
                                   i: colorPagina[index].idiomaid - 1,
+                                  colorPrincipal: colorPagina[index].colorPrincipal,
+                                  colorSecundario: colorPagina[index].colorTextoPrincipal,
                                 ),
                               ),
                             );

@@ -11,7 +11,9 @@ import 'data.dart';
 class CategoryPage extends StatefulWidget {
   final List<Categorias> categoriasPagina;
   final int i;
-  const CategoryPage({Key key, this.categoriasPagina, this.i}) : super(key: key);
+  final int colorPrincipal;
+  final int colorSecundario;
+  const CategoryPage({Key key, this.categoriasPagina, this.i, this.colorPrincipal, this.colorSecundario}) : super(key: key);
 
   @override
   _CategoryPageState createState() => _CategoryPageState();
@@ -105,7 +107,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(100)
                                     ),
-                                    color: Color(0xFFe9ecef),
+                                    color: Color(widget.colorPrincipal),
                                     child: Padding(
                                       padding: const EdgeInsets.all(30.0),
                                       child: Column(
@@ -117,7 +119,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
-                                              color: Color(0xFF242423),
+                                              color: Color(widget.colorSecundario),
                                               fontWeight: FontWeight.w700,
                                             ),
                                             textAlign: TextAlign.center,
@@ -127,7 +129,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             children: <Widget>[
                                               Icon(
                                                 Icons.arrow_forward,
-                                                color: Color(0xFF242423),
+                                                color: Color(widget.colorSecundario),
                                               ),
                                             ],
                                           ),

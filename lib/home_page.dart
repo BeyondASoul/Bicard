@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                               CupertinoPageRoute(
                                 builder: (context) => DetailPage(
                                   info: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index],
+                                  colorFondo: colorPagina[widget.idiomaID].colorTarjetaFondo,
                                 ),
                               ),
                             );
@@ -125,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                                       padding: const EdgeInsets.all(30.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
                                           SizedBox(height:30),
                                           Text(
