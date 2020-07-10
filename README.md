@@ -11,8 +11,8 @@ Presentación de verbos y palabras sólo en tarjetas, disponible en iOS y Androi
 * [Flutter 1.17.5](https://flutter.dev) - Flutter is an open-source UI software development kit created by Google.
 * [Dart 2.8.4](https://dart.dev) - Programming language developed by Google.
 * [VS Code 1.47.0](https://code.visualstudio.com) - Free source-code editor made by Microsoft.
-* [Xcode 11.5](https://flutter.dev) - Integrated development environment (IDE) for macOS developed by Apple.
-* [Android Studio 4.0](https://dart.dev) - Integrated development environment (IDE) developed by Google.
+* [Xcode 11.5](https://developer.apple.com/documentation/xcode-release-notes/xcode-11_5-release-notes) - Integrated development environment (IDE) for macOS developed by Apple.
+* [Android Studio 4.0](https://developer.android.com/studio/?gclid=Cj0KCQjwgJv4BRCrARIsAB17JI5W5b6RVq58P6xIVV680W3QmVHb2Ac0nPQEfdgMMsnJmeAPFOKgrRgaArPWEALw_wcB&gclsrc=aw.ds) - Integrated development environment (IDE) developed by Google.
 * [Emojipedia](https://emojipedia.org/apple/) - Apple Emoji List for iPhone, iPad and macOS.
 
 ## Packages
