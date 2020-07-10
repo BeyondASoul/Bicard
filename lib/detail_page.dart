@@ -62,7 +62,7 @@ class DetailPage extends StatelessWidget {
                         info.presente,
                         style: TextStyle(
                           fontFamily: 'Avenir',
-                          fontSize: 30,
+                          fontSize: 35,
                           color: Color(0xFF000000),
                           fontWeight: FontWeight.w500,
                         ),
@@ -75,7 +75,7 @@ class DetailPage extends StatelessWidget {
                         info.pronunciacion1,
                         style: TextStyle(
                           fontFamily: 'Avenir',
-                          fontSize: 30,
+                          fontSize: 35,
                           color: Color(0XAA6c757d),
                           fontWeight: FontWeight.w500,
                         ),
@@ -88,7 +88,7 @@ class DetailPage extends StatelessWidget {
                       "${info.pasado}",
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 30,
+                        fontSize: 35,
                         color: Color(0xFF000000),
                         fontWeight: FontWeight.w500,
                       ),
@@ -101,7 +101,7 @@ class DetailPage extends StatelessWidget {
                       "${info.pronunciacion2}",
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 30,
+                        fontSize: 35,
                         color: Color(0XAA6c757d),
                         fontWeight: FontWeight.w500,
                       ),
@@ -114,7 +114,7 @@ class DetailPage extends StatelessWidget {
                       "${info.participio}",
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 30,
+                        fontSize: 35,
                         color: Color(0xFF000000),
                         fontWeight: FontWeight.w500,
                       ),
@@ -127,7 +127,7 @@ class DetailPage extends StatelessWidget {
                       "${info.pronunciacion3}",
                       style: TextStyle(
                         fontFamily: 'Avenir',
-                        fontSize: 30,
+                        fontSize: 35,
                         color: Color(0XAA6c757d),
                         fontWeight: FontWeight.w500,
                       ),
