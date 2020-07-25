@@ -127,7 +127,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             children: <Widget>[
                                               Text(
                                                 'Elegir',

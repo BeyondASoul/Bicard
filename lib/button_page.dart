@@ -110,7 +110,7 @@ class _ButtonPageState extends State<ButtonPage> {
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             children: <Widget>[
                                               Text(
                                                 'Elegir',

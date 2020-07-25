@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.end,
                                             children: <Widget>[
                                               Text(
                                                 'Ver más',
