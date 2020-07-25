@@ -620,11 +620,21 @@ List<ColorPagina> colorPagina = [
   pronunciacion1: 'Enser',
   pronunciacion2: 'Ensert',
   pronunciacion3: 'Ensert',
-  image: 'assets/answer.png'),],
+  image: 'assets/answer.png'),
+  Info(60, 
+  es: 'Encontrar',
+  presente: 'Find',
+  pasado: 'Found',
+  participio: 'Found',
+  pronunciacion1: 'Faind',
+  pronunciacion2: 'Found',
+  pronunciacion3: 'Found',
+  image: 'assets/find.png'),
+  ],
     ),
     Categorias(2,categoria: 'Sustantivos',imagenCategoria: 'assets/highheels.png',
     list: 
-      [
+    [
         Info(1,
         es: 'Cuchara',
         presente: 'Spoon',
@@ -1084,7 +1094,6 @@ List<ColorPagina> colorPagina = [
         image: 'assets/plural.png',
       ),
     ]
-
     )
   ],
   ),
@@ -1100,7 +1109,7 @@ List<ColorPagina> colorPagina = [
   colorElementosFaltantes: 0x9050514F,
   colorElementoActual: 0xFF50514F,
   categorias: [
-    Categorias(1,categoria: 'Verbos',imagenCategoria: 'assets/verbos.png',
+    Categorias(1,categoria: 'Verbos',imagenCategoria: 'assets/speak.png',
     list: [
   Info (1,
   es: 'Llorar',
@@ -1122,7 +1131,7 @@ List<ColorPagina> colorPagina = [
   image: 'assets/run.png'),
   ],
   ),
-    Categorias(2,categoria: 'Sustantivos',imagenCategoria: 'assets/sustantivos.png',
+    Categorias(2,categoria: 'Sustantivos',imagenCategoria: 'assets/highheels.png',
     list: 
       [
         Info(1,
@@ -1159,7 +1168,7 @@ List<ColorPagina> colorPagina = [
   colorElementosFaltantes: 0x90e0fbfc,
   colorElementoActual: 0xFFe0fbfc,
   categorias: [
-    Categorias(1,categoria: 'Verbos',imagenCategoria: 'assets/verbos.png',
+    Categorias(1,categoria: 'Verbos',imagenCategoria: 'assets/speak.png',
     list: [
   Info (1,
   es: 'Llorar',
@@ -1173,7 +1182,7 @@ List<ColorPagina> colorPagina = [
   image: 'assets/run.png'),
   ],
   ),
-    Categorias(2,categoria: 'Sustantivos',imagenCategoria: 'assets/sustantivos.png',
+    Categorias(2,categoria: 'Sustantivos',imagenCategoria: 'assets/highheels.png',
     list: 
       [
         Info(1,
