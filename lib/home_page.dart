@@ -18,7 +18,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
+    colorPagina[widget.idiomaID].categorias[widget.categoriaID].list.sort((a, b) => a.es.compareTo(b.es));
     return Scaffold(
       backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
       appBar: AppBar(
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                           widget.categoria,
                           style: TextStyle(
                             fontFamily: 'Avenir',
-                            fontSize: 35,
+                            fontSize: 40,
                             color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
                             fontWeight: FontWeight.w600,
                           ),
@@ -81,6 +82,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           textAlign: TextAlign.center,
                         ),
+                        SizedBox(height:100),
                       ],
                     ),
                   ),
@@ -115,15 +117,15 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  SizedBox(height:200),
+                                  SizedBox(height:100),
                                   Card(
-                                    elevation: 30,
+                                    elevation: 15,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100)
+                                      borderRadius: BorderRadius.circular(50)
                                     ),
                                     color: Color(colorPagina[widget.idiomaID].colorTarjetaFondo),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(30.0),
+                                      padding: const EdgeInsets.all(50.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
                                               Text(
                                                 'Ver más',
@@ -152,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ),
                                               Icon(
-                                                Icons.arrow_forward,
+                                                Icons.arrow_drop_down_circle,
                                                 color: Color(colorPagina[widget.idiomaID].colorTextoTarjetaSecundario),
                                               ),
                                             ],

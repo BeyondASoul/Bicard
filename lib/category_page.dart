@@ -12,8 +12,9 @@ class CategoryPage extends StatefulWidget {
   final List<Categorias> categoriasPagina;
   final int i;
   final int colorPrincipal;
+  final int colorTextoPrincipal;
   final int colorSecundario;
-  const CategoryPage({Key key, this.categoriasPagina, this.i, this.colorPrincipal, this.colorSecundario}) : super(key: key);
+  const CategoryPage({Key key, this.categoriasPagina, this.i, this.colorPrincipal, this.colorTextoPrincipal ,this.colorSecundario}) : super(key: key);
 
   @override
   _CategoryPageState createState() => _CategoryPageState();
@@ -67,6 +68,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                         textAlign: TextAlign.center,
                       ),
+                      SizedBox(height:100),
                     ],
                   ),
                   Container(
@@ -101,15 +103,15 @@ class _CategoryPageState extends State<CategoryPage> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  SizedBox(height:200),
+                                  SizedBox(height:100),
                                   Card(
-                                    elevation: 30,
+                                    elevation: 15,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100)
+                                      borderRadius: BorderRadius.circular(50)
                                     ),
                                     color: Color(widget.colorPrincipal),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(30.0),
+                                      padding: const EdgeInsets.all(50.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
@@ -119,16 +121,25 @@ class _CategoryPageState extends State<CategoryPage> {
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
-                                              color: Color(widget.colorSecundario),
+                                              color: Color(widget.colorTextoPrincipal),
                                               fontWeight: FontWeight.w700,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
+                                              Text(
+                                                'Elegir',
+                                                style: TextStyle(
+                                                  fontFamily: 'Avenir',
+                                                  fontSize: 20,
+                                                  color: Color(widget.colorSecundario),
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
                                               Icon(
-                                                Icons.arrow_forward,
+                                                Icons.arrow_drop_down_circle,
                                                 color: Color(widget.colorSecundario),
                                               ),
                                             ],

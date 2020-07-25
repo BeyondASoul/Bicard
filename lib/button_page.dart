@@ -18,6 +18,10 @@ class _ButtonPageState extends State<ButtonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF242423),
+        elevation: 0,
+      ),
       backgroundColor: Color(0xFF242423),
       body: Container(
         alignment: Alignment.center,
@@ -42,6 +46,7 @@ class _ButtonPageState extends State<ButtonPage> {
                         textAlign: TextAlign.center,
                       ),
                     ),
+                    SizedBox(height:100),
                   ],
                 ),
                 FadeInDown(
@@ -56,7 +61,7 @@ class _ButtonPageState extends State<ButtonPage> {
                         builder: FractionPaginationBuilder(
                         color: Color(0xFFe9ecef),
                         activeColor: Color(0xFFe9ecef),
-                        activeFontSize: 50,
+                        activeFontSize: 40,
                         fontSize: 20,
                         ),
                       ),
@@ -71,7 +76,8 @@ class _ButtonPageState extends State<ButtonPage> {
                                   categoriasPagina: colorPagina[index].categorias,
                                   i: colorPagina[index].idiomaid - 1,
                                   colorPrincipal: colorPagina[index].colorPrincipal,
-                                  colorSecundario: colorPagina[index].colorTextoPrincipal,
+                                  colorTextoPrincipal: colorPagina[index].colorTextoPrincipal,
+                                  colorSecundario: colorPagina[index].colorTextoSecundario,
                                 ),
                               ),
                             );
@@ -80,15 +86,15 @@ class _ButtonPageState extends State<ButtonPage> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  SizedBox(height:200),
+                                  SizedBox(height:100),
                                   Card(
-                                    elevation: 30,
+                                    elevation: 15,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100)
+                                      borderRadius: BorderRadius.circular(50)
                                     ),
                                     color: Color(colorPagina[index].colorPrincipal),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(30.0),
+                                      padding: const EdgeInsets.all(50.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
@@ -104,11 +110,20 @@ class _ButtonPageState extends State<ButtonPage> {
                                             textAlign: TextAlign.center,
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: <Widget>[
+                                              Text(
+                                                'Elegir',
+                                                style: TextStyle(
+                                                  fontFamily: 'Avenir',
+                                                  fontSize: 20,
+                                                  color: Color(colorPagina[index].colorTextoSecundario),
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
                                               Icon(
-                                                Icons.arrow_forward,
-                                                color: Color(colorPagina[index].colorTextoPrincipal),
+                                                Icons.arrow_drop_down_circle,
+                                                color: Color(colorPagina[index].colorTextoSecundario),
                                               ),
                                             ],
                                           ),
