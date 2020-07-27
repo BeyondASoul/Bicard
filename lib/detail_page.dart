@@ -42,7 +42,7 @@ class DetailPage extends StatelessWidget {
                       tag: info.id,
                       child: Image.asset(info.image)
                     ),
-                    Divider(color: Color(0xFF6c757d)),
+                    Divider(color: Color(0xFF000000)),
                     SizedBox(height: 50),
                     FadeInRight(
                       child: Text(

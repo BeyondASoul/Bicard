@@ -61,7 +61,7 @@ class _ButtonPageState extends State<ButtonPage> {
                         builder: FractionPaginationBuilder(
                         color: Color(0xFFe9ecef),
                         activeColor: Color(0xFFe9ecef),
-                        activeFontSize: 40,
+                        activeFontSize: 50,
                         fontSize: 20,
                         ),
                       ),
