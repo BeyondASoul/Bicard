@@ -14,7 +14,13 @@ class CategoryPage extends StatefulWidget {
   final int colorPrincipal;
   final int colorTextoPrincipal;
   final int colorSecundario;
-  const CategoryPage({Key key, this.categoriasPagina, this.i, this.colorPrincipal, this.colorTextoPrincipal ,this.colorSecundario}) : super(key: key);
+  final int colorFondoTarjeta;
+  final int colorTextoTarjeta;
+  final int colorTextoTarjetaSec;
+  const CategoryPage({Key key, this.categoriasPagina, this.i, 
+  this.colorPrincipal, this.colorTextoPrincipal ,this.colorSecundario,
+  this.colorFondoTarjeta, this.colorTextoTarjeta, this.colorTextoTarjetaSec,
+  }) : super(key: key);
 
   @override
   _CategoryPageState createState() => _CategoryPageState();
@@ -24,53 +30,46 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF242423),
+      backgroundColor: Color(widget.colorPrincipal),
       appBar: AppBar(
-        backgroundColor: Color(0xFF242423),
+        backgroundColor: Color(widget.colorPrincipal),
         elevation: 0,
+        title: Text(
+          'Categoría',
+          style: TextStyle(
+            fontSize: 20.0,
+            fontFamily: 'Avenir',
+            color: Color(widget.colorTextoPrincipal),
+            fontWeight: FontWeight.w300,
+            ),
+            ),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
+          color: Color(widget.colorTextoPrincipal),
           onPressed: () {
             HapticFeedback.mediumImpact();
             Navigator.pop(context);
           },
         ),
         actions: <Widget>[
-          Hero(
-            transitionOnUserGestures: true,
-            tag: colorPagina[widget.i].idiomaid.toString() + "_IdiomaID",
-            child: Image.asset(
-              colorPagina[widget.i].imageIdioma
-            ),
+          Image.asset(
+            colorPagina[widget.i].imageIdioma,
+            scale: 5,
           ),
         ],
       ),
-      body: FadeInRight(
-        duration: Duration(milliseconds: 700),
+      body: ElasticInRight(
+        duration: Duration(milliseconds: 1000),
         child: Container(
           alignment: Alignment.center,
           child: SafeArea(
             child: SingleChildScrollView(
               child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Elige una categoría',
-                        style: TextStyle(
-                          fontSize: 35.0,
-                          fontFamily: 'Avenir',
-                          color: Color(0xFFe9ecef),
-                          fontWeight: FontWeight.w500,
-                          ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height:100),
-                    ],
-                  ),
                   Container(
                     height: 500,
                     child: Swiper(
@@ -78,8 +77,8 @@ class _CategoryPageState extends State<CategoryPage> {
                       layout: SwiperLayout.DEFAULT,
                       pagination: SwiperPagination(
                         builder: FractionPaginationBuilder(
-                        color: Color(0xFFe9ecef),
-                        activeColor: Color(0xFFe9ecef),
+                        color: Color(widget.colorSecundario),
+                        activeColor: Color(widget.colorTextoPrincipal),
                         activeFontSize: 50,
                         fontSize: 20,
                         ),
@@ -103,13 +102,13 @@ class _CategoryPageState extends State<CategoryPage> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  SizedBox(height:100),
+                                  SizedBox(height:130),
                                   Card(
                                     elevation: 15,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50)
                                     ),
-                                    color: Color(widget.colorPrincipal),
+                                    color: Color(widget.colorFondoTarjeta),
                                     child: Padding(
                                       padding: const EdgeInsets.all(50.0),
                                       child: Column(
@@ -121,8 +120,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
-                                              color: Color(widget.colorTextoPrincipal),
-                                              fontWeight: FontWeight.w700,
+                                              color: Color(widget.colorTextoTarjeta),
+                                              fontWeight: FontWeight.w400,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -134,13 +133,13 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 style: TextStyle(
                                                   fontFamily: 'Avenir',
                                                   fontSize: 20,
-                                                  color: Color(widget.colorSecundario),
-                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(widget.colorTextoTarjetaSec),
+                                                  fontWeight: FontWeight.w400,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.arrow_drop_down_circle,
-                                                color: Color(widget.colorSecundario),
+                                                color: Color(widget.colorTextoTarjetaSec),
                                               ),
                                             ],
                                           ),

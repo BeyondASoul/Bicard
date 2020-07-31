@@ -25,9 +25,19 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
         elevation: 0,
+        title: Text(
+          widget.categoria,
+          style: TextStyle(
+            fontFamily: 'Avenir',
+            fontSize: 20,
+            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
+            fontWeight: FontWeight.w300,
+            ),
+        ),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
+          color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
           onPressed: () {
             HapticFeedback.mediumImpact();
             Navigator.pop(context);
@@ -38,54 +48,23 @@ class _HomePageState extends State<HomePage> {
             transitionOnUserGestures: true,
             tag: colorPagina[widget.idiomaID].categorias[widget.categoriaID].categoria.toString() + "_CategoriaID",
             child: Image.asset(
-              colorPagina[widget.idiomaID].categorias[widget.categoriaID].imagenCategoria
+              colorPagina[widget.idiomaID].categorias[widget.categoriaID].imagenCategoria,
+              scale: 5,
             ),
           ),
         ],
       ),
-      body: FadeInRight(
-        duration: Duration(milliseconds: 700),
+      body: ElasticInRight(
+        duration: Duration(milliseconds: 1000),
         child: Container(
           alignment: Alignment.center,
           child: SafeArea(
             child: SingleChildScrollView(
               child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          widget.categoria,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 40,
-                            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
-                            fontWeight: FontWeight.w600,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Hero(
-                          transitionOnUserGestures: true,
-                          tag: colorPagina[widget.idiomaID].idiomaid.toString() + "_IdiomaID",
-                          child: Image.asset(
-                            colorPagina[widget.idiomaID].imageIdioma, 
-                            scale: 5,
-                            ),
-                        ),
-                        Text(
-                          colorPagina[widget.idiomaID].idioma,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 20,
-                            color: Color(colorPagina[widget.idiomaID].colorTextoSecundario),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height:100),
-                      ],
-                    ),
-                  ),
                   Container(
                     height: 500,
                     child: Swiper(
@@ -117,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  SizedBox(height:100),
+                                  SizedBox(height:130),
                                   Card(
                                     elevation: 15,
                                     shape: RoundedRectangleBorder(
@@ -137,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
                                               color: Color(colorPagina[widget.idiomaID].colorTextoTarjeta),
-                                              fontWeight: FontWeight.w700,
+                                              fontWeight: FontWeight.w400,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -150,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                                                   fontFamily: 'Avenir',
                                                   fontSize: 20,
                                                   color: Color(colorPagina[widget.idiomaID].colorTextoTarjetaSecundario),
-                                                  fontWeight: FontWeight.w500,
+                                                  fontWeight: FontWeight.w300,
                                                 ),
                                               ),
                                               Icon(
