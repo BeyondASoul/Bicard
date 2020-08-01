@@ -152,12 +152,8 @@ class _CategoryPageState extends State<CategoryPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                    Hero(
-                                      transitionOnUserGestures: true,
-                                      tag: widget.categoriasPagina[index].categoria.toString() + '_CategoriaID',
-                                      child: Image.asset(
-                                        widget.categoriasPagina[index].imagenCategoria,
-                                      ),
+                                    Image.asset(
+                                      widget.categoriasPagina[index].imagenCategoria,
                                     ),
                                 ],
                               ),

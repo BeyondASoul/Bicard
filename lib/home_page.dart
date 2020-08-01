@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'dart:math';
+
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +21,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) { 
-    colorPagina[widget.idiomaID].categorias[widget.categoriaID].list.sort((a, b) => a.es.compareTo(b.es));
+    var list2 = colorPagina[widget.idiomaID].categorias[widget.categoriaID];
+    //list2.list.sort((a, b) => a.es.compareTo(b.es));
     return Scaffold(
       backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
       appBar: AppBar(
@@ -44,13 +47,19 @@ class _HomePageState extends State<HomePage> {
           },
         ),
         actions: <Widget>[
-          Hero(
-            transitionOnUserGestures: true,
-            tag: colorPagina[widget.idiomaID].categorias[widget.categoriaID].categoria.toString() + "_CategoriaID",
-            child: Image.asset(
-              colorPagina[widget.idiomaID].categorias[widget.categoriaID].imagenCategoria,
-              scale: 5,
-            ),
+          IconButton(
+            icon: Icon(Icons.search),
+            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
+            onPressed: (){
+              HapticFeedback.mediumImpact();
+              showSearch(context: context,delegate: DataSearch(
+                lista: list2.list,
+                colorFondoSearch: colorPagina[widget.idiomaID].colorPrincipal,
+                colorTextoSearch: colorPagina[widget.idiomaID].colorTextoTarjeta,
+                colorTarjetaFondo: colorPagina[widget.idiomaID].colorTarjetaFondo,
+                )
+                ,);
+            },
           ),
         ],
       ),
@@ -68,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 500,
                     child: Swiper(
-                      itemCount: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list.length,
+                      itemCount: list2.list.length,
                       layout: SwiperLayout.DEFAULT,
                       pagination: SwiperPagination(
                         builder: FractionPaginationBuilder(
@@ -86,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                               context,
                               CupertinoPageRoute(
                                 builder: (context) => DetailPage(
-                                  info: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index],
+                                  info: list2.list[index],
                                   colorFondo: colorPagina[widget.idiomaID].colorTarjetaFondo,
                                 ),
                               ),
@@ -111,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                                         children: <Widget>[
                                           SizedBox(height:30),
                                           Text(
-                                            colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].es,
+                                            list2.list[index].es,
                                             style: TextStyle(
                                               fontFamily: 'Avenir',
                                               fontSize: 40,
@@ -149,9 +158,9 @@ class _HomePageState extends State<HomePage> {
                                 children: <Widget>[
                                   Hero(
                                     transitionOnUserGestures: true,
-                                    tag: colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].id,
+                                    tag: list2.list[index].id,
                                     child: Image.asset(
-                                      colorPagina[widget.idiomaID].categorias[widget.categoriaID].list[index].image
+                                      list2.list[index].image
                                     ),
                                   ),
                                 ],
@@ -168,6 +177,115 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class DataSearch extends SearchDelegate<String>{
+  final List<Info> lista;
+  final int colorFondoSearch;
+  final int colorTextoSearch;
+  final int colorTarjetaFondo;
+  DataSearch({this.lista,this.colorFondoSearch,this.colorTextoSearch,this.colorTarjetaFondo});
+  @override
+  List<Widget> buildActions(BuildContext context) {
+      return [
+        IconButton(icon: Icon(Icons.clear),onPressed: (){
+          query = '';
+        },
+        ),
+      ];
+    }
+  
+    @override
+    Widget buildLeading(BuildContext context) {
+      return IconButton(
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+        ),
+        onPressed: (){
+          close(context, null);
+        }
+      );
+    }
+  
+    @override
+    Widget buildResults(BuildContext context) {
+    final suggestionList = lista.where((p) => p.es.toUpperCase().startsWith(query.toUpperCase())).toList();
+    return ListView.builder(itemBuilder: (context,index) => ListTile(
+      onTap: (){
+        HapticFeedback.mediumImpact();
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => DetailPage(
+              info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+              colorFondo: colorTarjetaFondo,
+            ),
+          ),
+        );
+      },
+      leading: Image.asset(
+        suggestionList[index].image,
+        scale: 5,
+      ),
+      title: RichText(text: TextSpan(
+        text: suggestionList[index].es.substring(0,query.length),
+        style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w700),
+        children: [
+          TextSpan(
+            text: suggestionList[index].es.substring(query.length),
+            style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w300),
+          ),
+        ],
+      ),
+      ),
+    ),
+    itemCount: suggestionList.length,
+    );
+    }
+  
+    @override
+    Widget buildSuggestions(BuildContext context) {
+    final List<Info> suggestList = [];
+    for (var i = 0; i < 5; i++) {
+      var rng = new Random();
+        suggestList.add(lista[rng.nextInt(lista.length)]);
+    }
+    final suggestionList = query.isEmpty 
+    ? suggestList 
+    :lista.where((element) => element.es.toUpperCase().startsWith(query.toUpperCase())).toList();
+    return ListView.builder(itemBuilder: (context,index) => ListTile(
+      onTap: (){
+        HapticFeedback.mediumImpact();
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => DetailPage(
+              info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+              colorFondo: colorTarjetaFondo,
+            ),
+          ),
+        );
+      },
+      leading: Image.asset(
+        suggestionList[index].image,
+        scale: 5,
+      ),
+      title: RichText(text: TextSpan(
+        text: suggestionList[index].es.substring(0,query.length),
+        style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w700),
+        children: [
+          TextSpan(
+            text: suggestionList[index].es.substring(query.length),
+            style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w300),
+          ),
+        ],
+      ),
+      ),
+    ),
+    itemCount: suggestionList.length,
     );
   }
 }
