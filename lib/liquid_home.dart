@@ -25,11 +25,10 @@ class _LiquidHomeState extends State<LiquidHome> {
       body: ElasticInRight(
               child: LiquidSwipe(
           pages: liquidPages,
-          fullTransitionValue: 800,
           enableLoop: true,
           enableSlideIcon: true,
           slideIconWidget: Icon(Icons.arrow_left,color: Color(colorPagina[page].colorTextoPrincipal),),
-          positionSlideIcon: 0.3,
+          positionSlideIcon: 0,
           waveType: WaveType.liquidReveal,
           onPageChangeCallback: (page) => pageChangeCallback(page),
           currentUpdateTypeCallback: ( updateType ) => updateTypeCallback( updateType ),

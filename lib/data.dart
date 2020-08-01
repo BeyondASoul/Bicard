@@ -1722,13 +1722,13 @@ List<ColorPagina> colorPagina = [
   idioma: 'Ruso',
   imageIdioma: 'assets/ru.png',
   colorPrincipal: 0xFF0466c8,
-  colorTextoPrincipal: 0xFFE0FBFC,
-  colorTextoSecundario: 0x90E0FBFC,
+  colorTextoPrincipal: 0xFFCAE1FF,
+  colorTextoSecundario: 0x90CAE1FF,
   colorTextoTarjeta: 0xFF0466c8,
   colorTextoTarjetaSecundario: 0x900466c8,
-  colorTarjetaFondo: 0xFFE0FBFC,
-  colorElementosFaltantes: 0x90E0FBFC,
-  colorElementoActual: 0xFFE0FBFC,
+  colorTarjetaFondo: 0xFFCAE1FF,
+  colorElementosFaltantes: 0x90CAE1FF,
+  colorElementoActual: 0xFFCAE1FF,
   categorias: [
     Categorias(1,categoria: 'Verbos',imagenCategoria: 'assets/speak.png',
     list: [

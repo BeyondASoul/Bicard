@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:math';
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               showSearch(context: context,delegate: DataSearch(
                 lista: list2.list,
                 colorFondoSearch: colorPagina[widget.idiomaID].colorPrincipal,
-                colorTextoSearch: colorPagina[widget.idiomaID].colorTextoTarjeta,
+                colorTextoSearch: colorPagina[widget.idiomaID].colorTextoPrincipal,
                 colorTarjetaFondo: colorPagina[widget.idiomaID].colorTarjetaFondo,
                 )
                 ,);
@@ -181,7 +183,28 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
 class DataSearch extends SearchDelegate<String>{
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    assert(context != null);
+    final ThemeData theme = Theme.of(context);
+    assert(theme != null);
+    return theme.copyWith(
+      primaryColor: Color(colorFondoSearch),
+      primaryIconTheme: theme.primaryIconTheme.copyWith(color: Color(colorTextoSearch)),
+      primaryColorBrightness: Brightness.dark,
+      primaryTextTheme: theme.primaryTextTheme,
+    );
+  }
+  @override
+  String get searchFieldLabel => 'Buscar';
+  TextStyle get searchFieldStyle => TextStyle(
+    color: Color(colorTextoSearch),
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.w300,
+    fontSize: 20,);
+
   final List<Info> lista;
   final int colorFondoSearch;
   final int colorTextoSearch;
@@ -190,7 +213,8 @@ class DataSearch extends SearchDelegate<String>{
   @override
   List<Widget> buildActions(BuildContext context) {
       return [
-        IconButton(icon: Icon(Icons.clear),onPressed: (){
+        IconButton(icon: Icon(Icons.clear),
+        onPressed: (){
           query = '';
         },
         ),
@@ -200,10 +224,7 @@ class DataSearch extends SearchDelegate<String>{
     @override
     Widget buildLeading(BuildContext context) {
       return IconButton(
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_arrow,
-          progress: transitionAnimation,
-        ),
+        icon: Icon(Icons.arrow_back_ios),
         onPressed: (){
           close(context, null);
         }
@@ -213,36 +234,48 @@ class DataSearch extends SearchDelegate<String>{
     @override
     Widget buildResults(BuildContext context) {
     final suggestionList = lista.where((p) => p.es.toUpperCase().startsWith(query.toUpperCase())).toList();
-    return ListView.builder(itemBuilder: (context,index) => ListTile(
-      onTap: (){
-        HapticFeedback.mediumImpact();
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => DetailPage(
-              info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
-              colorFondo: colorTarjetaFondo,
+    return Scaffold(
+      backgroundColor: Color(colorFondoSearch),
+      body: ListView.builder(itemBuilder: (context,index) => ListTile(
+        onTap: (){
+          HapticFeedback.mediumImpact();
+          Navigator.push(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => DetailPage(
+                info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+                colorFondo: colorTarjetaFondo,
+              ),
             ),
-          ),
-        );
-      },
-      leading: Image.asset(
-        suggestionList[index].image,
-        scale: 5,
+          );
+        },
+        leading: Image.asset(
+          suggestionList[index].image,
+          scale: 5,
+        ),
+        trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+        title: RichText(text: TextSpan(
+          text: suggestionList[index].es.substring(0,query.length),
+          style: TextStyle(
+            color: Color(colorTextoSearch),
+            fontWeight: FontWeight.w700, 
+            fontFamily: 'Avenir',
+            fontSize: 20,),
+          children: [
+            TextSpan(
+              text: suggestionList[index].es.substring(query.length),
+              style: TextStyle(
+                color: Color(colorTextoSearch),
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Avenir',
+                fontSize: 20,),
+            ),
+          ],
+        ),
+        ),
       ),
-      title: RichText(text: TextSpan(
-        text: suggestionList[index].es.substring(0,query.length),
-        style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w700),
-        children: [
-          TextSpan(
-            text: suggestionList[index].es.substring(query.length),
-            style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w300),
-          ),
-        ],
+      itemCount: suggestionList.length,
       ),
-      ),
-    ),
-    itemCount: suggestionList.length,
     );
     }
   
@@ -256,36 +289,49 @@ class DataSearch extends SearchDelegate<String>{
     final suggestionList = query.isEmpty 
     ? suggestList 
     :lista.where((element) => element.es.toUpperCase().startsWith(query.toUpperCase())).toList();
-    return ListView.builder(itemBuilder: (context,index) => ListTile(
-      onTap: (){
-        HapticFeedback.mediumImpact();
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => DetailPage(
-              info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
-              colorFondo: colorTarjetaFondo,
+    return Scaffold(
+      backgroundColor: Color(colorFondoSearch),
+        body: ListView.builder(itemBuilder: (context,index) => ListTile(
+        onTap: (){
+          HapticFeedback.mediumImpact();
+          Navigator.push(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => DetailPage(
+                info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+                colorFondo: colorTarjetaFondo,
+              ),
             ),
-          ),
-        );
-      },
-      leading: Image.asset(
-        suggestionList[index].image,
-        scale: 5,
+          );
+        },
+        leading: Image.asset(
+          suggestionList[index].image,
+          scale: 5,
+        ),
+        trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+        title: RichText(text: TextSpan(
+          text: suggestionList[index].es.substring(0,query.length),
+          style: TextStyle(
+            color: Color(colorTextoSearch),
+            fontWeight: FontWeight.w700, 
+            fontFamily: 'Avenir',
+            fontSize: 20,),
+          children: [
+            TextSpan(
+              text: suggestionList[index].es.substring(query.length),
+              style: TextStyle(
+                color: Color(colorTextoSearch),
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Avenir',
+                fontSize: 20,),
+            ),
+          ],
+        ),
+        ),
       ),
-      title: RichText(text: TextSpan(
-        text: suggestionList[index].es.substring(0,query.length),
-        style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w700),
-        children: [
-          TextSpan(
-            text: suggestionList[index].es.substring(query.length),
-            style: TextStyle(color: Color(colorTextoSearch),fontWeight: FontWeight.w300),
-          ),
-        ],
+      itemCount: suggestionList.length,
+      itemExtent: 50,
       ),
-      ),
-    ),
-    itemCount: suggestionList.length,
     );
   }
 }
