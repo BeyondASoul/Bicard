@@ -215,6 +215,7 @@ class DataSearch extends SearchDelegate<String>{
       return [
         IconButton(icon: Icon(Icons.clear),
         onPressed: (){
+          HapticFeedback.mediumImpact();
           query = '';
         },
         ),
@@ -226,6 +227,7 @@ class DataSearch extends SearchDelegate<String>{
       return IconButton(
         icon: Icon(Icons.arrow_back_ios),
         onPressed: (){
+          HapticFeedback.mediumImpact();
           close(context, null);
         }
       );
@@ -275,6 +277,7 @@ class DataSearch extends SearchDelegate<String>{
         ),
       ),
       itemCount: suggestionList.length,
+      itemExtent: 50,
       ),
     );
     }
@@ -291,47 +294,49 @@ class DataSearch extends SearchDelegate<String>{
     :lista.where((element) => element.es.toUpperCase().startsWith(query.toUpperCase())).toList();
     return Scaffold(
       backgroundColor: Color(colorFondoSearch),
-        body: ListView.builder(itemBuilder: (context,index) => ListTile(
-        onTap: (){
-          HapticFeedback.mediumImpact();
-          Navigator.push(
-            context,
-            CupertinoPageRoute(
-              builder: (context) => DetailPage(
-                info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
-                colorFondo: colorTarjetaFondo,
+        body: ElasticInRight(
+        child: ListView.builder(itemBuilder: (context,index) => ListTile(
+          onTap: (){
+            HapticFeedback.mediumImpact();
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => DetailPage(
+                  info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+                  colorFondo: colorTarjetaFondo,
+                ),
               ),
+            );
+          },
+          leading: Image.asset(
+              suggestionList[index].image,
+              scale: 5,
             ),
-          );
-        },
-        leading: Image.asset(
-          suggestionList[index].image,
-          scale: 5,
-        ),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
-        title: RichText(text: TextSpan(
-          text: suggestionList[index].es.substring(0,query.length),
-          style: TextStyle(
-            color: Color(colorTextoSearch),
-            fontWeight: FontWeight.w700, 
-            fontFamily: 'Avenir',
-            fontSize: 20,),
-          children: [
-            TextSpan(
-              text: suggestionList[index].es.substring(query.length),
-              style: TextStyle(
-                color: Color(colorTextoSearch),
-                fontWeight: FontWeight.w300,
-                fontFamily: 'Avenir',
-                fontSize: 20,),
-            ),
-          ],
-        ),
-        ),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+          title: RichText(text: TextSpan(
+            text: suggestionList[index].es.substring(0,query.length),
+            style: TextStyle(
+              color: Color(colorTextoSearch),
+              fontWeight: FontWeight.w700, 
+              fontFamily: 'Avenir',
+              fontSize: 20,),
+            children: [
+              TextSpan(
+                text: suggestionList[index].es.substring(query.length),
+                style: TextStyle(
+                  color: Color(colorTextoSearch),
+                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Avenir',
+                  fontSize: 20,),
+              ),
+            ],
+          ),
+          ),
       ),
       itemCount: suggestionList.length,
       itemExtent: 50,
       ),
+        ),
     );
   }
 }
