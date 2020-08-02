@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:math';
@@ -27,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     //list2.list.sort((a, b) => a.es.compareTo(b.es));
     return Scaffold(
       backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
         elevation: 0,
@@ -200,9 +199,9 @@ class DataSearch extends SearchDelegate<String>{
   @override
   String get searchFieldLabel => 'Buscar';
   TextStyle get searchFieldStyle => TextStyle(
-    color: Color(colorTextoSearch),
+    //color: Color(colorTextoSearch),
     fontFamily: 'Avenir',
-    fontWeight: FontWeight.w300,
+    //fontWeight: FontWeight.w300,
     fontSize: 20,);
 
   final List<Info> lista;
@@ -212,13 +211,15 @@ class DataSearch extends SearchDelegate<String>{
   DataSearch({this.lista,this.colorFondoSearch,this.colorTextoSearch,this.colorTarjetaFondo});
   @override
   List<Widget> buildActions(BuildContext context) {
-      return [
-        IconButton(icon: Icon(Icons.clear),
+      return [ query.isEmpty ?
+        IconButton(icon: Icon(null),
+        )
+        : IconButton(icon: Icon(Icons.cancel),
         onPressed: (){
           HapticFeedback.mediumImpact();
           query = '';
         },
-        ),
+        )
       ];
     }
   
@@ -238,64 +239,9 @@ class DataSearch extends SearchDelegate<String>{
     final suggestionList = lista.where((p) => p.es.toUpperCase().startsWith(query.toUpperCase())).toList();
     return Scaffold(
       backgroundColor: Color(colorFondoSearch),
-      body: ListView.builder(itemBuilder: (context,index) => ListTile(
-        onTap: (){
-          HapticFeedback.mediumImpact();
-          Navigator.push(
-            context,
-            CupertinoPageRoute(
-              builder: (context) => DetailPage(
-                info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
-                colorFondo: colorTarjetaFondo,
-              ),
-            ),
-          );
-        },
-        leading: Image.asset(
-          suggestionList[index].image,
-          scale: 5,
-        ),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
-        title: RichText(text: TextSpan(
-          text: suggestionList[index].es.substring(0,query.length),
-          style: TextStyle(
-            color: Color(colorTextoSearch),
-            fontWeight: FontWeight.w700, 
-            fontFamily: 'Avenir',
-            fontSize: 20,),
-          children: [
-            TextSpan(
-              text: suggestionList[index].es.substring(query.length),
-              style: TextStyle(
-                color: Color(colorTextoSearch),
-                fontWeight: FontWeight.w300,
-                fontFamily: 'Avenir',
-                fontSize: 20,),
-            ),
-          ],
-        ),
-        ),
-      ),
-      itemCount: suggestionList.length,
-      itemExtent: 50,
-      ),
-    );
-    }
-  
-    @override
-    Widget buildSuggestions(BuildContext context) {
-    final List<Info> suggestList = [];
-    for (var i = 0; i < 5; i++) {
-      var rng = new Random();
-        suggestList.add(lista[rng.nextInt(lista.length)]);
-    }
-    final suggestionList = query.isEmpty 
-    ? suggestList 
-    :lista.where((element) => element.es.toUpperCase().startsWith(query.toUpperCase())).toList();
-    return Scaffold(
-      backgroundColor: Color(colorFondoSearch),
-        body: ElasticInRight(
-        child: ListView.builder(itemBuilder: (context,index) => ListTile(
+      resizeToAvoidBottomInset: false,
+      body: ListView.builder(itemBuilder: (context,index) => FadeInRight(
+        child: ListTile(
           onTap: (){
             HapticFeedback.mediumImpact();
             Navigator.push(
@@ -309,34 +255,80 @@ class DataSearch extends SearchDelegate<String>{
             );
           },
           leading: Image.asset(
-              suggestionList[index].image,
-              scale: 5,
-            ),
+            suggestionList[index].image,
+            scale: 5,
+          ),
           trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
-          title: RichText(text: TextSpan(
-            text: suggestionList[index].es.substring(0,query.length),
+          title: Text(
+            suggestionList[index].es,
             style: TextStyle(
               color: Color(colorTextoSearch),
-              fontWeight: FontWeight.w700, 
+              fontWeight: FontWeight.w300,
               fontFamily: 'Avenir',
-              fontSize: 20,),
-            children: [
-              TextSpan(
-                text: suggestionList[index].es.substring(query.length),
-                style: TextStyle(
-                  color: Color(colorTextoSearch),
-                  fontWeight: FontWeight.w300,
-                  fontFamily: 'Avenir',
-                  fontSize: 20,),
-              ),
-            ],
+              fontSize: 20,
+            ),
           ),
+          subtitle: Text(
+            suggestionList[index].presente,
+            style: TextStyle(
+              color: Color(colorTextoSearch),
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Avenir',
+              fontSize: 15,
+            ),
           ),
+        ),
       ),
       itemCount: suggestionList.length,
-      itemExtent: 50,
+      ),
+    );
+    }
+  
+    @override
+    Widget buildSuggestions(BuildContext context) {
+    final List<Info> suggestList = [];
+    for (var i = 0; i < 0; i++) {//Modificar si se quiere lista de sugerencias
+      var rng = new Random();
+        suggestList.add(lista[rng.nextInt(lista.length)]);
+    }
+    final suggestionList = query.isEmpty 
+    ? suggestList 
+    : lista.where((element) => element.es.toUpperCase().startsWith(query.toUpperCase())).toList();
+    return Scaffold(
+      backgroundColor: Color(colorFondoSearch),
+      resizeToAvoidBottomInset: false,
+        body: ListView.builder(itemBuilder: (context,index) => FadeInRight(
+                  child: ListTile(
+            onTap: (){
+              HapticFeedback.mediumImpact();
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => DetailPage(
+                    info: query.isEmpty ? suggestionList[index] : suggestionList[lista[index].id -1 ],
+                    colorFondo: colorTarjetaFondo,
+                  ),
+                ),
+              );
+            },
+            leading: Image.asset(
+                suggestionList[index].image,
+                scale: 5,
+              ),
+            trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+            title: Text(
+              suggestionList[index].es,
+              style: TextStyle(
+                color: Color(colorTextoSearch),
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Avenir',
+                fontSize: 20,
+              ),
+            )
       ),
         ),
+      itemCount: suggestionList.length,
+      ),
     );
   }
 }

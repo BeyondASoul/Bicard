@@ -31,6 +31,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(widget.colorPrincipal),
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color(widget.colorPrincipal),
         elevation: 0,
