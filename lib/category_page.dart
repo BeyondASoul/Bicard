@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/services.dart';
+import 'dart:math';
 
 import 'home_page.dart';
 import 'data.dart';
@@ -54,9 +55,20 @@ class _CategoryPageState extends State<CategoryPage> {
           },
         ),
         actions: <Widget>[
-          Image.asset(
-            colorPagina[widget.i].imageIdioma,
-            scale: 5,
+          IconButton(
+            icon: Icon(Icons.search),
+            color: Color(widget.colorTextoPrincipal),
+            onPressed: (){
+              HapticFeedback.mediumImpact();
+              showSearch(context: context,delegate: DataSearch(
+                lista: widget.categoriasPagina,
+                colorFondoSearch: widget.colorPrincipal,
+                colorTextoSearch: widget.colorTextoPrincipal,
+                colorTarjetaFondo: widget.colorFondoTarjeta,
+                idiomaID: widget.i,
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -169,6 +181,160 @@ class _CategoryPageState extends State<CategoryPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class DataSearch extends SearchDelegate<String>{
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    assert(context != null);
+    final ThemeData theme = Theme.of(context);
+    assert(theme != null);
+    return theme.copyWith(
+      primaryColor: Color(colorFondoSearch),
+      primaryIconTheme: theme.primaryIconTheme.copyWith(color: Color(colorTextoSearch)),
+      primaryColorBrightness: Brightness.dark,
+      primaryTextTheme: theme.primaryTextTheme,
+    );
+  }
+  @override
+  String get searchFieldLabel => 'Buscar';
+  TextStyle get searchFieldStyle => TextStyle(
+    //color: Color(colorTextoSearch),
+    fontFamily: 'Avenir',
+    //fontWeight: FontWeight.w300,
+    fontSize: 20,);
+
+  final List<Categorias> lista;
+  final int colorFondoSearch;
+  final int colorTextoSearch;
+  final int colorTarjetaFondo;
+  final int idiomaID;
+  DataSearch({this.lista,this.colorFondoSearch,this.colorTextoSearch,this.colorTarjetaFondo,this.idiomaID});
+  @override
+  List<Widget> buildActions(BuildContext context) {
+      return [ query.isEmpty ?
+        IconButton(icon: Icon(null),
+        onPressed: null,
+        )
+        : IconButton(icon: Icon(Icons.cancel),
+        onPressed: (){
+          HapticFeedback.mediumImpact();
+          query = '';
+        },
+        )
+      ];
+    }
+  
+    @override
+    Widget buildLeading(BuildContext context) {
+      return IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: (){
+          HapticFeedback.mediumImpact();
+          close(context, null);
+        }
+      );
+    }
+  
+    @override
+    Widget buildResults(BuildContext context) {
+    final suggestionList = lista.where((p) => p.categoria.toUpperCase().startsWith(query.toUpperCase())).toList();
+    return Scaffold(
+      backgroundColor: Color(colorFondoSearch),
+      resizeToAvoidBottomInset: false,
+      body: ListView.builder(itemBuilder: (context,index) => FadeInRight(
+        child: ListTile(
+          onTap: (){
+            HapticFeedback.mediumImpact();
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => HomePage(
+                  categoria: suggestionList[index].categoria,
+                  categoriaID: suggestionList[index].categoriaID - 1,
+                  idiomaID: idiomaID,
+                ),
+              ),
+            );
+          },
+          leading: Image.asset(
+            suggestionList[index].imagenCategoria,
+            scale: 5,
+          ),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+          title: Text(
+            suggestionList[index].categoria,
+            style: TextStyle(
+              color: Color(colorTextoSearch),
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Avenir',
+              fontSize: 20,
+            ),
+          ),
+          subtitle: Text(
+            'Categoria #'+suggestionList[index].categoriaID.toString(),
+            style: TextStyle(
+              color: Color(colorTextoSearch),
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Avenir',
+              fontSize: 15,
+            ),
+          ),
+        ),
+      ),
+      itemCount: suggestionList.length,
+      ),
+    );
+    }
+  
+    @override
+    Widget buildSuggestions(BuildContext context) {
+    final List<Categorias> suggestList = [];
+    for (var i = 0; i < 0; i++) {//Modificar si se quiere lista de sugerencias
+      var rng = new Random();
+        suggestList.add(lista[rng.nextInt(lista.length)]);
+    }
+    final suggestionList = query.isEmpty 
+    ? suggestList 
+    : lista.where((element) => element.categoria.toUpperCase().startsWith(query.toUpperCase())).toList();
+    return Scaffold(
+      backgroundColor: Color(colorFondoSearch),
+      resizeToAvoidBottomInset: false,
+        body: ListView.builder(itemBuilder: (context,index) => FadeInRight(
+                  child: ListTile(
+            onTap: (){
+              HapticFeedback.mediumImpact();
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => HomePage(
+                  categoria: suggestionList[index].categoria,
+                  categoriaID: suggestionList[index].categoriaID - 1,
+                  idiomaID: idiomaID,
+                ),
+                ),
+              );
+            },
+            leading: Image.asset(
+                suggestionList[index].imagenCategoria,
+                scale: 5,
+              ),
+            trailing: Icon(Icons.keyboard_arrow_right, color: Color(colorTextoSearch),),
+            title: Text(
+              suggestionList[index].categoria,
+              style: TextStyle(
+                color: Color(colorTextoSearch),
+                fontWeight: FontWeight.w300,
+                fontFamily: 'Avenir',
+                fontSize: 20,
+              ),
+            )
+      ),
+        ),
+      itemCount: suggestionList.length,
       ),
     );
   }

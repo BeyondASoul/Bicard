@@ -31,9 +31,9 @@ final liquidPages = [
               Image(
                 image: AssetImage(colorPagina[0].imageIdioma),
               ),
-              Text(colorPagina[0].idioma,
+              Text('Elige un idioma:',
               style: TextStyle(
-                fontSize: 40.0,
+                fontSize: 30.0,
                 fontFamily: 'Avenir',
                 color: Color(colorPagina[0].colorTextoPrincipal),
                 fontWeight: FontWeight.w300,
@@ -71,9 +71,9 @@ final liquidPages = [
               Image(
                 image: AssetImage(colorPagina[1].imageIdioma),
               ),
-              Text(colorPagina[1].idioma,
+              Text('Elige un idioma:',
               style: TextStyle(
-                fontSize: 40.0,
+                fontSize: 30.0,
                 fontFamily: 'Avenir',
                 color: Color(colorPagina[1].colorTextoPrincipal),
                 fontWeight: FontWeight.w300,
@@ -111,9 +111,9 @@ final liquidPages = [
               Image(
                 image: AssetImage(colorPagina[2].imageIdioma),
               ),
-              Text(colorPagina[2].idioma,
+              Text('Elige un idioma:',
               style: TextStyle(
-                fontSize: 40.0,
+                fontSize: 30.0,
                 fontFamily: 'Avenir',
                 color: Color(colorPagina[2].colorTextoPrincipal),
                 fontWeight: FontWeight.w300,

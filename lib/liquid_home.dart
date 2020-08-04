@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -23,25 +25,32 @@ class _LiquidHomeState extends State<LiquidHome> {
     return Scaffold(
       backgroundColor: Color(0xFFCC444B),
       body: ElasticInRight(
-              child: LiquidSwipe(
+        child: LiquidSwipe(
           pages: liquidPages,
           enableLoop: true,
           enableSlideIcon: true,
           slideIconWidget: Icon(Icons.arrow_left,color: Color(colorPagina[page].colorTextoPrincipal),),
-          positionSlideIcon: 0,
+          positionSlideIcon: 0.3,
           waveType: WaveType.liquidReveal,
           onPageChangeCallback: (page) => pageChangeCallback(page),
           currentUpdateTypeCallback: ( updateType ) => updateTypeCallback( updateType ),
         ),
       ),
       floatingActionButton: ElasticInLeft(
-              child: FloatingActionButton.extended(
+        child: FloatingActionButton.extended(
           heroTag: pageChangeCallback(page),
           backgroundColor: Color(colorPagina[page].colorTextoPrincipal),
           foregroundColor: Color(colorPagina[page].colorPrincipal),
           elevation: 15,
-          icon: Icon(Icons.arrow_drop_down_circle),
-          label: Text("Elegir"),
+          label: Text(colorPagina[page].idioma,style: 
+          TextStyle(
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Avenir',
+              fontSize: 20,
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0),),),
           onPressed: (){
             HapticFeedback.mediumImpact();
             Navigator.push(

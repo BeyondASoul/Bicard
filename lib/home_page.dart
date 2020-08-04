@@ -58,8 +58,8 @@ class _HomePageState extends State<HomePage> {
                 colorFondoSearch: colorPagina[widget.idiomaID].colorPrincipal,
                 colorTextoSearch: colorPagina[widget.idiomaID].colorTextoPrincipal,
                 colorTarjetaFondo: colorPagina[widget.idiomaID].colorTarjetaFondo,
-                )
-                ,);
+                ),
+              );
             },
           ),
         ],
@@ -213,6 +213,7 @@ class DataSearch extends SearchDelegate<String>{
   List<Widget> buildActions(BuildContext context) {
       return [ query.isEmpty ?
         IconButton(icon: Icon(null),
+        onPressed: null,
         )
         : IconButton(icon: Icon(Icons.cancel),
         onPressed: (){
