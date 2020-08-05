@@ -22,6 +22,10 @@ Presentación de verbos y palabras sólo en tarjetas, disponible en iOS, Android
 * [animate_do 1.7.2](https://pub.dev/packages/animate_do) - An animation package inspired in Animate.css, built using only Flutter animations, no extra packages.
 * [flutter_launcher_icons 0.7.5](https://pub.dev/packages/flutter_launcher_icons) - A command-line tool which simplifies the task of updating your Flutter app's launcher icon.
 
+## Assets
+
+* [Twemoji 13.0.1](https://twemoji.twitter.com) - Used for assets, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
 ## Test Devices
 
 * iPhone XS Max - iOS 13.5
