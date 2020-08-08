@@ -46,7 +46,7 @@ class DetailPage extends StatelessWidget {
                     ),
                     Divider(color: Color(0xFF000000)),
                     SizedBox(height: 50),
-                    ElasticInRight(
+                    info.es==null ? Container() : ElasticInRight(
                       child: Text(
                         info.es,
                         style: TextStyle(
@@ -58,7 +58,7 @@ class DetailPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    ElasticInRight(
+                    info.presente==null ? Container() : ElasticInRight(
                       delay: Duration(milliseconds: 100),
                       child: Text(
                         info.presente,
@@ -71,7 +71,7 @@ class DetailPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    ElasticInRight(
+                    info.pronunciacion1==null ? Container() : ElasticInRight(
                       delay: Duration(milliseconds: 200),
                       child: Text(
                         info.pronunciacion1,
