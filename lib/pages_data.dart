@@ -125,4 +125,44 @@ final liquidPages = [
       ),
     ),
   ),
+  Container(
+    child: Scaffold(
+      backgroundColor: Color(colorPagina[3].colorPrincipal),
+      appBar: AppBar(
+        backgroundColor: Color(colorPagina[3].colorPrincipal),
+        elevation: 0,
+        title: Text('Idioma',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: 'Avenir',
+                  color: Color(colorPagina[3].colorTextoPrincipal),
+                  fontWeight: FontWeight.w300,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+      ),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image(
+                image: AssetImage(colorPagina[3].imageIdioma),
+              ),
+              Text('Elige un idioma:',
+              style: TextStyle(
+                fontSize: 30.0,
+                fontFamily: 'Avenir',
+                color: Color(colorPagina[3].colorTextoPrincipal),
+                fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  ),
 ];
