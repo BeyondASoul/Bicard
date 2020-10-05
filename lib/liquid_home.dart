@@ -29,11 +29,15 @@ class _LiquidHomeState extends State<LiquidHome> {
           pages: liquidPages,
           enableLoop: true,
           enableSlideIcon: true,
-          slideIconWidget: Icon(Icons.arrow_left,color: Color(colorPagina[page].colorTextoPrincipal),),
+          slideIconWidget: Icon(
+            Icons.arrow_left,
+            color: Color(colorPagina[page].colorTextoPrincipal),
+          ),
           positionSlideIcon: 0.3,
           waveType: WaveType.liquidReveal,
           onPageChangeCallback: (page) => pageChangeCallback(page),
-          currentUpdateTypeCallback: ( updateType ) => updateTypeCallback( updateType ),
+          currentUpdateTypeCallback: (updateType) =>
+              updateTypeCallback(updateType),
         ),
       ),
       floatingActionButton: ElasticInLeft(
@@ -42,29 +46,35 @@ class _LiquidHomeState extends State<LiquidHome> {
           backgroundColor: Color(colorPagina[page].colorTextoPrincipal),
           foregroundColor: Color(colorPagina[page].colorPrincipal),
           elevation: 15,
-          label: Text(colorPagina[page].idioma,style: 
-          TextStyle(
+          label: Text(
+            colorPagina[page].idioma,
+            style: TextStyle(
               fontWeight: FontWeight.w300,
               fontFamily: 'Avenir',
               fontSize: 20,
             ),
           ),
           shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15.0),),),
-          onPressed: (){
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            ),
+          ),
+          onPressed: () {
             HapticFeedback.mediumImpact();
             Navigator.push(
-            context,
-            CupertinoPageRoute(
-              builder: (context) => CategoryPage(
-                categoriasPagina: colorPagina[page].categorias,
-                i: colorPagina[page].idiomaid - 1,
-                colorPrincipal: colorPagina[page].colorPrincipal,
-                colorTextoPrincipal: colorPagina[page].colorTextoPrincipal,
-                colorSecundario: colorPagina[page].colorTextoSecundario,
-                colorTextoTarjeta: colorPagina[page].colorTextoTarjeta,
-                colorTextoTarjetaSec: colorPagina[page].colorTextoTarjetaSecundario,
-                colorFondoTarjeta: colorPagina[page].colorTarjetaFondo,
+              context,
+              CupertinoPageRoute(
+                builder: (context) => CategoryPage(
+                  categoriasPagina: colorPagina[page].categorias,
+                  i: colorPagina[page].idiomaid - 1,
+                  languageTTS: colorPagina[page].languagetts,
+                  colorPrincipal: colorPagina[page].colorPrincipal,
+                  colorTextoPrincipal: colorPagina[page].colorTextoPrincipal,
+                  colorSecundario: colorPagina[page].colorTextoSecundario,
+                  colorTextoTarjeta: colorPagina[page].colorTextoTarjeta,
+                  colorTextoTarjetaSec:
+                      colorPagina[page].colorTextoTarjetaSecundario,
+                  colorFondoTarjeta: colorPagina[page].colorTarjetaFondo,
                 ),
               ),
             );
@@ -76,13 +86,13 @@ class _LiquidHomeState extends State<LiquidHome> {
   }
 
   pageChangeCallback(int lpage) {
-    print( lpage );
+    print(lpage);
     setState(() {
       page = lpage;
     });
   }
 
-  updateTypeCallback( UpdateType updateType) {
-    print( updateType );
+  updateTypeCallback(UpdateType updateType) {
+    print(updateType);
   }
 }

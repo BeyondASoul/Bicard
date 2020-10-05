@@ -1,4 +1,4 @@
-package com.beyondasoul.bicard
+package com.beyondasoul.bicardapp
 
 import io.flutter.embedding.android.FlutterActivity
 

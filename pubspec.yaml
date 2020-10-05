@@ -25,9 +25,10 @@ dependencies:
   flutter_launcher_icons: "^0.7.5"
   animate_do: ^1.7.2
   liquid_swipe: ^1.4.3
+  flutter_tts: ^1.2.7
 
 flutter_icons:
-  image_path: "icon/Bicard.png" 
+  image_path: "icon/Bicard.png"
   android: true
   ios: true
 
