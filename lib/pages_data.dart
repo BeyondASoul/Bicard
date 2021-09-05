@@ -38,9 +38,9 @@ Container languagePage(ColorPagina pagina) {
                 image: AssetImage(pagina.imageIdioma),
               ),
               Text(
-                'Elige un idioma',
+                pagina.idioma,
                 style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 40.0,
                   fontFamily: 'Avenir',
                   color: Color(pagina.colorTextoPrincipal),
                   fontWeight: FontWeight.w300,

@@ -46,7 +46,7 @@ class _LiquidHomeState extends State<LiquidHome> {
           foregroundColor: Color(colorPagina[page].colorPrincipal),
           elevation: 15,
           label: Text(
-            colorPagina[page].idioma,
+            "Seleccionar",
             style: TextStyle(
               fontWeight: FontWeight.w300,
               fontFamily: 'Avenir',
