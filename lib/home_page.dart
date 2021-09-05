@@ -27,27 +27,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var list2 = colorPagina[widget.idiomaID].categorias[widget.categoriaID];
+    ColorPagina id = colorPagina[widget.idiomaID];
+    Categorias list2 =
+        colorPagina[widget.idiomaID].categorias[widget.categoriaID];
     //list2.list.sort((a, b) => a.es.compareTo(b.es));
     return Scaffold(
-      backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
+      backgroundColor: Color(id.colorPrincipal),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Color(colorPagina[widget.idiomaID].colorPrincipal),
+        backgroundColor: Color(id.colorPrincipal),
         elevation: 0,
         title: Text(
           widget.categoria,
           style: TextStyle(
             fontFamily: 'Avenir',
-            fontSize: 20,
-            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
+            fontSize: 30,
+            color: Color(id.colorTextoPrincipal),
             fontWeight: FontWeight.w300,
           ),
         ),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
+          color: Color(id.colorTextoPrincipal),
           onPressed: () {
             HapticFeedback.mediumImpact();
             Navigator.pop(context);
@@ -56,18 +58,16 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            color: Color(colorPagina[widget.idiomaID].colorTextoPrincipal),
+            color: Color(id.colorTextoPrincipal),
             onPressed: () {
               HapticFeedback.mediumImpact();
               showSearch(
                 context: context,
                 delegate: DataSearch(
                   lista: list2.list,
-                  colorFondoSearch: colorPagina[widget.idiomaID].colorPrincipal,
-                  colorTextoSearch:
-                      colorPagina[widget.idiomaID].colorTextoPrincipal,
-                  colorTarjetaFondo:
-                      colorPagina[widget.idiomaID].colorTarjetaFondo,
+                  colorFondoSearch: id.colorPrincipal,
+                  colorTextoSearch: id.colorTextoPrincipal,
+                  colorTarjetaFondo: id.colorTarjetaFondo,
                   languagettssearch: widget.languageTTS,
                 ),
               );
@@ -93,105 +93,14 @@ class _HomePageState extends State<HomePage> {
                       layout: SwiperLayout.DEFAULT,
                       pagination: SwiperPagination(
                         builder: FractionPaginationBuilder(
-                          color: Color(colorPagina[widget.idiomaID]
-                              .colorElementosFaltantes),
-                          activeColor: Color(
-                              colorPagina[widget.idiomaID].colorElementoActual),
+                          color: Color(id.colorElementosFaltantes),
+                          activeColor: Color(id.colorElementoActual),
                           activeFontSize: 50,
                           fontSize: 20,
                         ),
                       ),
                       itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            HapticFeedback.mediumImpact();
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => DetailPage(
-                                  info: list2.list[index],
-                                  colorFondo: colorPagina[widget.idiomaID]
-                                      .colorTarjetaFondo,
-                                  languageTTS: widget.languageTTS,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Stack(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  SizedBox(height: 130),
-                                  Card(
-                                    elevation: 15,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
-                                    color: Color(colorPagina[widget.idiomaID]
-                                        .colorTarjetaFondo),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(50.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(height: 30),
-                                          Text(
-                                            list2.list[index].es,
-                                            style: TextStyle(
-                                              fontFamily: 'Avenir',
-                                              fontSize: 40,
-                                              color: Color(
-                                                  colorPagina[widget.idiomaID]
-                                                      .colorTextoTarjeta),
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: <Widget>[
-                                              Text(
-                                                'Ver más',
-                                                style: TextStyle(
-                                                  fontFamily: 'Avenir',
-                                                  fontSize: 20,
-                                                  color: Color(colorPagina[
-                                                          widget.idiomaID]
-                                                      .colorTextoTarjetaSecundario),
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
-                                              Icon(
-                                                Icons.arrow_drop_down_circle,
-                                                color: Color(colorPagina[
-                                                        widget.idiomaID]
-                                                    .colorTextoTarjetaSecundario),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Hero(
-                                    transitionOnUserGestures: true,
-                                    tag: list2.list[index].id,
-                                    child: Image.asset(list2.list[index].image),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
+                        return itemCategory(context, list2, index, id);
                       }, //itemBuilder
                     ),
                   ),
@@ -200,6 +109,100 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  InkWell itemCategory(
+      BuildContext context, Categorias list2, int index, ColorPagina id) {
+    return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () {
+        HapticFeedback.mediumImpact();
+        Navigator.push(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => DetailPage(
+              info: list2.list[index],
+              colorFondo: id.colorTarjetaFondo,
+              languageTTS: widget.languageTTS,
+            ),
+          ),
+        );
+      },
+      child: Stack(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              SizedBox(height: 130),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40),
+                child: Card(
+                  elevation: 15,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  color: Color(id.colorTarjetaFondo),
+                  child: Padding(
+                    padding: const EdgeInsets.all(50.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(height: 30),
+                        Text(
+                          list2.list[index].es,
+                          style: TextStyle(
+                            fontFamily: 'Avenir',
+                            fontSize: 40,
+                            color: Color(id.colorTextoTarjeta),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            Text(
+                              'Ver más',
+                              style: TextStyle(
+                                fontFamily: 'Avenir',
+                                fontSize: 20,
+                                color: Color(colorPagina[widget.idiomaID]
+                                    .colorTextoTarjetaSecundario),
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                            Icon(
+                              Icons.more_horiz,
+                              color: Color(colorPagina[widget.idiomaID]
+                                  .colorTextoTarjetaSecundario),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Hero(
+                transitionOnUserGestures: true,
+                tag: list2.list[index].id,
+                child: Image.asset(list2.list[index].image),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

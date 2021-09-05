@@ -47,7 +47,7 @@ class _CategoryPageState extends State<CategoryPage> {
         title: Text(
           'Categoría',
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: 28.0,
             fontFamily: 'Avenir',
             color: Color(widget.colorTextoPrincipal),
             fontWeight: FontWeight.w300,
@@ -109,6 +109,10 @@ class _CategoryPageState extends State<CategoryPage> {
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () {
                             HapticFeedback.mediumImpact();
                             Navigator.push(
@@ -131,53 +135,60 @@ class _CategoryPageState extends State<CategoryPage> {
                               Column(
                                 children: <Widget>[
                                   SizedBox(height: 130),
-                                  Card(
-                                    elevation: 15,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
-                                    color: Color(widget.colorFondoTarjeta),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(50.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(height: 30),
-                                          Text(
-                                            widget.categoriasPagina[index]
-                                                .categoria,
-                                            style: TextStyle(
-                                              fontFamily: 'Avenir',
-                                              fontSize: 40,
-                                              color: Color(
-                                                  widget.colorTextoTarjeta),
-                                              fontWeight: FontWeight.w400,
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 40, right: 40),
+                                    child: Card(
+                                      elevation: 15,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50)),
+                                      color: Color(widget.colorFondoTarjeta),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(50.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            SizedBox(height: 30),
+                                            Text(
+                                              widget.categoriasPagina[index]
+                                                  .categoria,
+                                              style: TextStyle(
+                                                fontFamily: 'Avenir',
+                                                fontSize: 40,
+                                                color: Color(
+                                                    widget.colorTextoTarjeta),
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: <Widget>[
-                                              Text(
-                                                'Elegir',
-                                                style: TextStyle(
-                                                  fontFamily: 'Avenir',
-                                                  fontSize: 20,
+                                            SizedBox(
+                                              height: 50,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: <Widget>[
+                                                Text(
+                                                  'Ver más',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Avenir',
+                                                    fontSize: 20,
+                                                    color: Color(widget
+                                                        .colorTextoTarjetaSec),
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.more_horiz,
                                                   color: Color(widget
                                                       .colorTextoTarjetaSec),
-                                                  fontWeight: FontWeight.w400,
                                                 ),
-                                              ),
-                                              Icon(
-                                                Icons.arrow_drop_down_circle,
-                                                color: Color(widget
-                                                    .colorTextoTarjetaSec),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

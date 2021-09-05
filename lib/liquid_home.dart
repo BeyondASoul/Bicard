@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
@@ -28,12 +27,12 @@ class _LiquidHomeState extends State<LiquidHome> {
         child: LiquidSwipe(
           pages: liquidPages,
           enableLoop: true,
-          enableSlideIcon: true,
           slideIconWidget: Icon(
-            Icons.arrow_left,
+            Icons.arrow_right,
             color: Color(colorPagina[page].colorTextoPrincipal),
+            size: 50,
           ),
-          positionSlideIcon: 0.3,
+          positionSlideIcon: 0.5,
           waveType: WaveType.liquidReveal,
           onPageChangeCallback: (page) => pageChangeCallback(page),
           currentUpdateTypeCallback: (updateType) =>

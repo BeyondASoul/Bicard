@@ -55,456 +55,178 @@ class DetailPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Hero(
-                        transitionOnUserGestures: true,
-                        tag: info.id,
-                        child: Image.asset(info.image)),
-                    Divider(color: Color(0xFF000000)),
                     SizedBox(height: 50),
-                    info.es == null
-                        ? Container()
-                        : ElasticInRight(
-                            child: Text(
-                              info.es,
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 40,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w400,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                    info.presente == null
-                        ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 100),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.presente),
-                              child: Text(
-                                info.presente,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                    Hero(
+                      transitionOnUserGestures: true,
+                      tag: info.id,
+                      child: Image.asset(info.image),
+                    ),
+                    SizedBox(height: 50),
+                    info.es == null ? Container() : infoSpanishText(),
+                    SizedBox(height: 50),
+                    Divider(
+                      color: Color(0xFF757575),
+                      indent: 55,
+                      endIndent: 55,
+                    ),
+                    SizedBox(height: 50),
                     info.pronunciacion1 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: Text(
-                              info.pronunciacion1,
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 35,
-                                color: Color(0XAA6c757d),
-                                fontWeight: FontWeight.w300,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                        : infoSecondaryText(info.pronunciacion1),
+                    info.presente == null
+                        ? Container()
+                        : infoPrincipalText(_speak, info.presente),
                     info.pronunciacion1_1 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_1),
-                              child: Text(
-                                info.pronunciacion1_1,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_1),
                     info.pronunciacion1_2 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_2),
-                              child: Text(
-                                info.pronunciacion1_2,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_2),
                     info.pronunciacion1_3 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_3),
-                              child: Text(
-                                info.pronunciacion1_3,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_3),
                     info.pronunciacion1_4 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_4),
-                              child: Text(
-                                info.pronunciacion1_4,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_4),
                     info.pronunciacion1_5 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_5),
-                              child: Text(
-                                info.pronunciacion1_5,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_5),
                     info.pronunciacion1_6 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 200),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion1_6),
-                              child: Text(
-                                info.pronunciacion1_6,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                    info.pasado == null
-                        ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 300),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pasado),
-                              child: Text(
-                                info.pasado,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion1_6),
+                    SizedBox(height: 50),
                     info.pronunciacion2 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: Text(
-                              info.pronunciacion2,
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 35,
-                                color: Color(0XAA6c757d),
-                                fontWeight: FontWeight.w300,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                        : infoSecondaryText(info.pronunciacion2),
+                    info.pasado == null
+                        ? Container()
+                        : infoPrincipalText(_speak, info.pasado),
                     info.pronunciacion2_1 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_1),
-                              child: Text(
-                                info.pronunciacion2_1,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_1),
                     info.pronunciacion2_2 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_2),
-                              child: Text(
-                                info.pronunciacion2_2,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_2),
                     info.pronunciacion2_3 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_3),
-                              child: Text(
-                                info.pronunciacion2_3,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_3),
                     info.pronunciacion2_4 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_4),
-                              child: Text(
-                                info.pronunciacion2_4,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_4),
                     info.pronunciacion2_5 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_5),
-                              child: Text(
-                                info.pronunciacion2_5,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_5),
                     info.pronunciacion2_6 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 400),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion2_6),
-                              child: Text(
-                                info.pronunciacion2_6,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                    info.participio == null
-                        ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 500),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.participio),
-                              child: Text(
-                                info.participio,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion2_6),
+                    SizedBox(height: 50),
                     info.pronunciacion3 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: Text(
-                              info.pronunciacion3,
-                              style: TextStyle(
-                                fontFamily: 'Avenir',
-                                fontSize: 35,
-                                color: Color(0XAA6c757d),
-                                fontWeight: FontWeight.w300,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                        : infoSecondaryText(info.pronunciacion3),
+                    info.participio == null
+                        ? Container()
+                        : infoPrincipalText(_speak, info.participio),
                     info.pronunciacion3_1 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_1),
-                              child: Text(
-                                info.pronunciacion3_1,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_1),
                     info.pronunciacion3_2 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_2),
-                              child: Text(
-                                info.pronunciacion3_2,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_2),
                     info.pronunciacion3_3 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_3),
-                              child: Text(
-                                info.pronunciacion3_3,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_3),
                     info.pronunciacion3_4 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_4),
-                              child: Text(
-                                info.pronunciacion3_4,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_4),
                     info.pronunciacion3_5 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_5),
-                              child: Text(
-                                info.pronunciacion3_5,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_5),
                     info.pronunciacion3_6 == null
                         ? Container()
-                        : ElasticInRight(
-                            delay: Duration(milliseconds: 600),
-                            child: FlatButton(
-                              onPressed: () => _speak(info.pronunciacion3_6),
-                              child: Text(
-                                info.pronunciacion3_6,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontSize: 35,
-                                  color: Color(0XAA6c757d),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                        : infoPronunciation(_speak, info.pronunciacion3_6),
                     SizedBox(height: 50),
-                    Divider(color: Color(0xFF000000)),
+                    Divider(
+                      color: Color(0xFF757575),
+                      indent: 55,
+                      endIndent: 55,
+                    ),
+                    SizedBox(height: 100),
                   ],
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  ElasticInRight infoPronunciation(
+      Future<dynamic> _speak(String text), String pronunciacion) {
+    return ElasticInRight(
+      delay: Duration(milliseconds: 200),
+      child: TextButton(
+        onPressed: () => _speak(pronunciacion),
+        child: Text(
+          pronunciacion,
+          style: TextStyle(
+            fontFamily: 'Avenir',
+            fontSize: 35,
+            color: Color(0XAA6c757d),
+            fontWeight: FontWeight.w300,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  ElasticInRight infoSpanishText() {
+    return ElasticInRight(
+      child: Text(
+        info.es,
+        style: TextStyle(
+          fontFamily: 'Avenir',
+          fontSize: 40,
+          color: Color(0xFF000000),
+          fontWeight: FontWeight.w400,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  ElasticInRight infoSecondaryText(String tiempo) {
+    return ElasticInRight(
+      delay: Duration(milliseconds: 200),
+      child: Text(
+        tiempo,
+        style: TextStyle(
+          fontFamily: 'Avenir',
+          fontSize: 35,
+          color: Color(0XAA6c757d),
+          fontWeight: FontWeight.w300,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  ElasticInRight infoPrincipalText(
+      Future<dynamic> _speak(String text), String infinitive) {
+    return ElasticInRight(
+      delay: Duration(milliseconds: 100),
+      child: TextButton(
+        onPressed: () => _speak(infinitive),
+        child: Text(
+          infinitive,
+          style: TextStyle(
+            fontFamily: 'Avenir',
+            fontSize: 35,
+            color: Color(0xFF000000),
+            fontWeight: FontWeight.w300,
+          ),
+          textAlign: TextAlign.center,
         ),
       ),
     );
