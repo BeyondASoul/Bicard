@@ -151,41 +151,46 @@ class _CategoryPageState extends State<CategoryPage> {
                                               CrossAxisAlignment.center,
                                           children: <Widget>[
                                             SizedBox(height: 30),
-                                            Text(
-                                              widget.categoriasPagina[index]
-                                                  .categoria,
-                                              style: TextStyle(
-                                                fontFamily: 'Avenir',
-                                                fontSize: 40,
-                                                color: Color(
-                                                    widget.colorTextoTarjeta),
-                                                fontWeight: FontWeight.w400,
+                                            FittedBox(
+                                              fit: BoxFit.fitWidth,
+                                              child: Text(
+                                                widget.categoriasPagina[index]
+                                                    .categoria,
+                                                style: TextStyle(
+                                                  fontFamily: 'Avenir',
+                                                  fontSize: 40,
+                                                  color: Color(
+                                                      widget.colorTextoTarjeta),
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                                textAlign: TextAlign.center,
                                               ),
-                                              textAlign: TextAlign.center,
                                             ),
                                             SizedBox(
                                               height: 50,
                                             ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: <Widget>[
-                                                Text(
-                                                  'Ver más',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Avenir',
-                                                    fontSize: 20,
+                                            Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: Column(
+                                                children: <Widget>[
+                                                  Text(
+                                                    'Ver más',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Avenir',
+                                                      fontSize: 20,
+                                                      color: Color(widget
+                                                          .colorTextoTarjetaSec),
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.more_horiz,
                                                     color: Color(widget
                                                         .colorTextoTarjetaSec),
-                                                    fontWeight: FontWeight.w400,
                                                   ),
-                                                ),
-                                                Icon(
-                                                  Icons.more_horiz,
-                                                  color: Color(widget
-                                                      .colorTextoTarjetaSec),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -197,9 +202,18 @@ class _CategoryPageState extends State<CategoryPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Image.asset(
-                                    widget.categoriasPagina[index]
-                                        .imagenCategoria,
+                                  Container(
+                                    height: 180,
+                                    width: 180,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(widget
+                                              .categoriasPagina[index]
+                                              .imagenCategoria),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
                                   ),
                                 ],
                               ),

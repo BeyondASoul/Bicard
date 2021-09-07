@@ -59,7 +59,16 @@ class DetailPage extends StatelessWidget {
                     Hero(
                       transitionOnUserGestures: true,
                       tag: info.id,
-                      child: Image.asset(info.image),
+                      child: Container(
+                        height: 180,
+                        width: 180,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(info.image),
+                              fit: BoxFit.contain,
+                            ),
+                            borderRadius: BorderRadius.circular(40)),
+                      ),
                     ),
                     SizedBox(height: 50),
                     info.es == null ? Container() : infoSpanishText(),

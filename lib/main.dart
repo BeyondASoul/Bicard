@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bicard',
       theme: ThemeData(
+        primaryColor: Colors.white,
+        brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LiquidHome(),

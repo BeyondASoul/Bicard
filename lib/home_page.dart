@@ -152,15 +152,18 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         SizedBox(height: 30),
-                        Text(
-                          list2.list[index].es,
-                          style: TextStyle(
-                            fontFamily: 'Avenir',
-                            fontSize: 40,
-                            color: Color(id.colorTextoTarjeta),
-                            fontWeight: FontWeight.w400,
+                        FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            list2.list[index].es,
+                            style: TextStyle(
+                              fontFamily: 'Avenir',
+                              fontSize: 40,
+                              color: Color(id.colorTextoTarjeta),
+                              fontWeight: FontWeight.w400,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                         SizedBox(
                           height: 50,
@@ -198,7 +201,16 @@ class _HomePageState extends State<HomePage> {
               Hero(
                 transitionOnUserGestures: true,
                 tag: list2.list[index].id,
-                child: Image.asset(list2.list[index].image),
+                child: Container(
+                  height: 180,
+                  width: 180,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(list2.list[index].image),
+                        fit: BoxFit.fill,
+                      ),
+                      borderRadius: BorderRadius.circular(40)),
+                ),
               ),
             ],
           ),
