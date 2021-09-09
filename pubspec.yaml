@@ -26,11 +26,20 @@ dependencies:
   animate_do: ^2.0.0
   liquid_swipe: ^2.1.0
   flutter_tts: ^3.2.2
+  flutter_native_splash: ^1.2.3
 
 flutter_icons:
   image_path: "icon/Bicard.png"
   android: true
   ios: true
+
+flutter_native_splash:
+  color: "#CC444B"
+  color_dark: "#CC444B"
+  image: icon/Bicard-512x512.png
+  android: true
+  ios: true
+
 
   flutter:
     sdk: flutter
